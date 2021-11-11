@@ -1,0 +1,1 @@
+/bin/c++ -fPIC -g -shared -Wl,-soname,libPlanefitting.so -o libPlanefitting.so CMakeFiles/Planefitting.dir/Planefitting.cpp.o   -L/usr/local/lib 

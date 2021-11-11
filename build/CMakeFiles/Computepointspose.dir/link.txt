@@ -1,0 +1,1 @@
+/bin/c++ -fPIC -g -shared -Wl,-soname,libComputepointspose.so -o libComputepointspose.so CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o   -L/usr/local/lib 

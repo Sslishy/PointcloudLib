@@ -1,0 +1,1 @@
+/bin/c++ -fPIC -g -shared -Wl,-soname,libPointProcess.so -o libPointProcess.so CMakeFiles/PointProcess.dir/PointProcess.cpp.o   -L/usr/local/lib 

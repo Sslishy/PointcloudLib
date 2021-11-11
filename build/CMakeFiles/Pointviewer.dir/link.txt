@@ -1,0 +1,1 @@
+/bin/c++ -fPIC -g -shared -Wl,-soname,libPointviewer.so -o libPointviewer.so CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o   -L/usr/local/lib 
