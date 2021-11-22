@@ -1,1 +1,1 @@
-/bin/c++ -fPIC -g -shared -Wl,-soname,libcylinderfitting.so -o libcylinderfitting.so CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o   -L/usr/local/lib 
+/bin/x86_64-linux-gnu-g++-8 -fPIC -shared -Wl,-soname,libcylinderfitting.so -o libcylinderfitting.so CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o   -L/usr/local/lib 

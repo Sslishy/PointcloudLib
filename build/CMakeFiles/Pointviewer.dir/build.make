@@ -73,15 +73,15 @@ CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o: CMakeFiles/Pointviewer.dir/flags.m
 CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o: ../Pointviewer.cpp
 CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o: CMakeFiles/Pointviewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o -MF CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o.d -o CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o -c /home/slishy/Code/class/lib/Pointviewer.cpp
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o -MF CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o.d -o CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o -c /home/slishy/Code/class/lib/Pointviewer.cpp
 
 CMakeFiles/Pointviewer.dir/Pointviewer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pointviewer.dir/Pointviewer.cpp.i"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/Pointviewer.cpp > CMakeFiles/Pointviewer.dir/Pointviewer.cpp.i
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/Pointviewer.cpp > CMakeFiles/Pointviewer.dir/Pointviewer.cpp.i
 
 CMakeFiles/Pointviewer.dir/Pointviewer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pointviewer.dir/Pointviewer.cpp.s"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/Pointviewer.cpp -o CMakeFiles/Pointviewer.dir/Pointviewer.cpp.s
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/Pointviewer.cpp -o CMakeFiles/Pointviewer.dir/Pointviewer.cpp.s
 
 # Object files for target Pointviewer
 Pointviewer_OBJECTS = \

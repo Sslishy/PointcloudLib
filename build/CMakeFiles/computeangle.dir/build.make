@@ -73,15 +73,15 @@ CMakeFiles/computeangle.dir/computeangle.cpp.o: CMakeFiles/computeangle.dir/flag
 CMakeFiles/computeangle.dir/computeangle.cpp.o: ../computeangle.cpp
 CMakeFiles/computeangle.dir/computeangle.cpp.o: CMakeFiles/computeangle.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/computeangle.dir/computeangle.cpp.o"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/computeangle.dir/computeangle.cpp.o -MF CMakeFiles/computeangle.dir/computeangle.cpp.o.d -o CMakeFiles/computeangle.dir/computeangle.cpp.o -c /home/slishy/Code/class/lib/computeangle.cpp
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/computeangle.dir/computeangle.cpp.o -MF CMakeFiles/computeangle.dir/computeangle.cpp.o.d -o CMakeFiles/computeangle.dir/computeangle.cpp.o -c /home/slishy/Code/class/lib/computeangle.cpp
 
 CMakeFiles/computeangle.dir/computeangle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/computeangle.dir/computeangle.cpp.i"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/computeangle.cpp > CMakeFiles/computeangle.dir/computeangle.cpp.i
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/computeangle.cpp > CMakeFiles/computeangle.dir/computeangle.cpp.i
 
 CMakeFiles/computeangle.dir/computeangle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/computeangle.dir/computeangle.cpp.s"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/computeangle.cpp -o CMakeFiles/computeangle.dir/computeangle.cpp.s
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/computeangle.cpp -o CMakeFiles/computeangle.dir/computeangle.cpp.s
 
 # Object files for target computeangle
 computeangle_OBJECTS = \

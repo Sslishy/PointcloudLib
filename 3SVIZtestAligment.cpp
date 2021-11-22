@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
 		pcl::console::print_error("load fail ...\n");
 		return 0;
 	}
-	for (size_t i = 0; i < cloud_in->points.size(); i++)
+	/*for (size_t i = 0; i < cloud_in->points.size(); i++)
 	{
 		cloud_in->points[i].x = cloud_in->points[i].x * 0.001;
         cloud_in->points[i].y = cloud_in->points[i].y * 0.001;
@@ -129,7 +129,7 @@ int main(int argc, char** argv) {
 		GoldSimple->points[i].x = GoldSimple->points[i].x * 0.001;
         GoldSimple->points[i].y = GoldSimple->points[i].y * 0.001;
         GoldSimple->points[i].z = GoldSimple->points[i].z * 0.001;
-	}
+	}*/
 	//Planefitting pf;
 	//pf.SetDistanceThreshold(0.08);
 	//pf.extract(cloud_in1,cloud_in,"false");
@@ -142,7 +142,7 @@ int main(int argc, char** argv) {
 	//pp.smoothxyz(GoldSimple);
 	pcl::copyPointCloud(*GoldSimple,*GoldSimpleorigin);
 	pcl::copyPointCloud(*cloud_in,*cloud_inorigin);	
-	pp.SetLeafSize(0.008);
+	pp.SetLeafSize(0.005);
 	pp.DownSimple(GoldSimple);
 	pp.DownSimple(cloud_in);
 	PointCloudAligment Pa;

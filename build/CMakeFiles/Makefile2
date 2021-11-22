@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/slishy/Code/class/lib/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/3SVIZplier.dir/all
+all: CMakeFiles/3SVIZgongtest.dir/all
 all: CMakeFiles/Pointviewer.dir/all
 all: CMakeFiles/PointCloudAligment.dir/all
 all: CMakeFiles/Planefitting.dir/all
@@ -79,7 +79,7 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/3SVIZplier.dir/clean
+clean: CMakeFiles/3SVIZgongtest.dir/clean
 clean: CMakeFiles/Pointviewer.dir/clean
 clean: CMakeFiles/PointCloudAligment.dir/clean
 clean: CMakeFiles/Planefitting.dir/clean
@@ -91,30 +91,30 @@ clean: CMakeFiles/CollisionDetection.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/3SVIZplier.dir
+# Target rules for target CMakeFiles/3SVIZgongtest.dir
 
 # All Build rule for target.
-CMakeFiles/3SVIZplier.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZplier.dir/build.make CMakeFiles/3SVIZplier.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZplier.dir/build.make CMakeFiles/3SVIZplier.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=1,2 "Built target 3SVIZplier"
-.PHONY : CMakeFiles/3SVIZplier.dir/all
+CMakeFiles/3SVIZgongtest.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=1,2 "Built target 3SVIZgongtest"
+.PHONY : CMakeFiles/3SVIZgongtest.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/3SVIZplier.dir/rule: cmake_check_build_system
+CMakeFiles/3SVIZgongtest.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/slishy/Code/class/lib/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/3SVIZplier.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/3SVIZgongtest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/slishy/Code/class/lib/build/CMakeFiles 0
-.PHONY : CMakeFiles/3SVIZplier.dir/rule
+.PHONY : CMakeFiles/3SVIZgongtest.dir/rule
 
 # Convenience name for target.
-3SVIZplier: CMakeFiles/3SVIZplier.dir/rule
-.PHONY : 3SVIZplier
+3SVIZgongtest: CMakeFiles/3SVIZgongtest.dir/rule
+.PHONY : 3SVIZgongtest
 
 # clean rule for target.
-CMakeFiles/3SVIZplier.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZplier.dir/build.make CMakeFiles/3SVIZplier.dir/clean
-.PHONY : CMakeFiles/3SVIZplier.dir/clean
+CMakeFiles/3SVIZgongtest.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/clean
+.PHONY : CMakeFiles/3SVIZgongtest.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Pointviewer.dir

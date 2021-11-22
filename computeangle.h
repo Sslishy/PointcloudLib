@@ -32,11 +32,13 @@ public:
     void offsetX(vector<pcl::PointXYZ> &center,const vector<pcl::Normal> Normal_X);
     void offsetY(vector<pcl::PointXYZ> &center,const vector<pcl::Normal> Normal_Y);
     void offsetZ(vector<pcl::PointXYZ> &center,const vector<pcl::Normal> Normal_Z);
-    Eigen::Vector3f rotationMatrixToEulerAngles(Eigen::Matrix4f& R);
-    Eigen::Matrix4f eulerAnglesToRotationMatrix(const Eigen::Vector3f theta_);
+    Eigen::Vector3f rotationMatrixToEulerAngles(Eigen::Matrix3f& R);
+    Eigen::Matrix3f eulerAnglesToRotationMatrix(const Eigen::Vector3f theta_);
     cv::Mat eulerAnglesToRotationMatrix(const cv::Vec3f theta_);
     cv::Vec3f rotationMatrixToEulerAngles(cv::Mat& R);
     Eigen::Quaterniond EulerAngles2Quaterniond(cv::Vec3f theta);
+    void computeRPY(const pcl::Normal Normal_Z,  Eigen::Vector3f & RPY);
+    void ComputeRotationAngle(Eigen::Vector3f & RPY);
     ~computeangle();
 private:
     float m_offset_x_value;

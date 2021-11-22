@@ -101,8 +101,8 @@ pcl::visualization::PCLVisualizer::Ptr Pointviewer::simpleVisN(pcl::PointCloud<p
 	rz1.x = rz[0] + center.x;
 	rz1.y = rz[1] + center.y;
 	rz1.z = rz[2] + center.z;
-	viewer->addLine(rx1,center,220,20,60,"line");
-	viewer->addLine(ry1,center,127,255,212,"line1");
+	viewer->addLine(rx1,center,255,0,0,"line");
+	viewer->addLine(ry1,center,0,255,0,"line1");
 	viewer->addLine(rz1,center,0,0,255,"line2");
 	viewer->addCoordinateSystem(0.5);
 	viewer->addPointCloud(cloud,pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ>(cloud,0.0,0.0,255.0),"cloud");

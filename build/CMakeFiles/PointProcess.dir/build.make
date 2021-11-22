@@ -73,15 +73,15 @@ CMakeFiles/PointProcess.dir/PointProcess.cpp.o: CMakeFiles/PointProcess.dir/flag
 CMakeFiles/PointProcess.dir/PointProcess.cpp.o: ../PointProcess.cpp
 CMakeFiles/PointProcess.dir/PointProcess.cpp.o: CMakeFiles/PointProcess.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PointProcess.dir/PointProcess.cpp.o"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PointProcess.dir/PointProcess.cpp.o -MF CMakeFiles/PointProcess.dir/PointProcess.cpp.o.d -o CMakeFiles/PointProcess.dir/PointProcess.cpp.o -c /home/slishy/Code/class/lib/PointProcess.cpp
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PointProcess.dir/PointProcess.cpp.o -MF CMakeFiles/PointProcess.dir/PointProcess.cpp.o.d -o CMakeFiles/PointProcess.dir/PointProcess.cpp.o -c /home/slishy/Code/class/lib/PointProcess.cpp
 
 CMakeFiles/PointProcess.dir/PointProcess.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PointProcess.dir/PointProcess.cpp.i"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/PointProcess.cpp > CMakeFiles/PointProcess.dir/PointProcess.cpp.i
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/PointProcess.cpp > CMakeFiles/PointProcess.dir/PointProcess.cpp.i
 
 CMakeFiles/PointProcess.dir/PointProcess.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PointProcess.dir/PointProcess.cpp.s"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/PointProcess.cpp -o CMakeFiles/PointProcess.dir/PointProcess.cpp.s
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/PointProcess.cpp -o CMakeFiles/PointProcess.dir/PointProcess.cpp.s
 
 # Object files for target PointProcess
 PointProcess_OBJECTS = \

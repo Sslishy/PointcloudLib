@@ -1,8 +1,8 @@
 [
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -isystem /usr/include/vtk-7.1 -isystem /usr/include/freetype2 -isystem /usr/local/include/pcl-1.11 -isystem /usr/include/eigen3 -isystem /usr/include/ni -isystem /usr/include/openni2 -isystem /usr/include/opencv4 -g -march=native -msse4.2 -mfpmath=sse -o CMakeFiles/3SVIZplier.dir/3SVIZplier.cpp.o -c /home/slishy/Code/class/lib/3SVIZplier.cpp",
-  "file": "/home/slishy/Code/class/lib/3SVIZplier.cpp"
+  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -isystem /usr/include/vtk-7.1 -isystem /usr/include/freetype2 -isystem /usr/local/include/pcl-1.11 -isystem /usr/include/eigen3 -isystem /usr/include/ni -isystem /usr/include/openni2 -isystem /usr/include/opencv4 -g -march=native -msse4.2 -mfpmath=sse -o CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o -c /home/slishy/Code/class/lib/3SVIZgongtest.cpp",
+  "file": "/home/slishy/Code/class/lib/3SVIZgongtest.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",

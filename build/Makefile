@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named 3SVIZplier
+# Target rules for targets named 3SVIZgongtest
 
 # Build rule for target.
-3SVIZplier: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 3SVIZplier
-.PHONY : 3SVIZplier
+3SVIZgongtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 3SVIZgongtest
+.PHONY : 3SVIZgongtest
 
 # fast build rule for target.
-3SVIZplier/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZplier.dir/build.make CMakeFiles/3SVIZplier.dir/build
-.PHONY : 3SVIZplier/fast
+3SVIZgongtest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/build
+.PHONY : 3SVIZgongtest/fast
 
 #=============================================================================
 # Target rules for targets named Pointviewer
@@ -233,29 +233,29 @@ CollisionDetection/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CollisionDetection.dir/build.make CMakeFiles/CollisionDetection.dir/build
 .PHONY : CollisionDetection/fast
 
-3SVIZplier.o: 3SVIZplier.cpp.o
-.PHONY : 3SVIZplier.o
+3SVIZgongtest.o: 3SVIZgongtest.cpp.o
+.PHONY : 3SVIZgongtest.o
 
 # target to build an object file
-3SVIZplier.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZplier.dir/build.make CMakeFiles/3SVIZplier.dir/3SVIZplier.cpp.o
-.PHONY : 3SVIZplier.cpp.o
+3SVIZgongtest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o
+.PHONY : 3SVIZgongtest.cpp.o
 
-3SVIZplier.i: 3SVIZplier.cpp.i
-.PHONY : 3SVIZplier.i
+3SVIZgongtest.i: 3SVIZgongtest.cpp.i
+.PHONY : 3SVIZgongtest.i
 
 # target to preprocess a source file
-3SVIZplier.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZplier.dir/build.make CMakeFiles/3SVIZplier.dir/3SVIZplier.cpp.i
-.PHONY : 3SVIZplier.cpp.i
+3SVIZgongtest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.i
+.PHONY : 3SVIZgongtest.cpp.i
 
-3SVIZplier.s: 3SVIZplier.cpp.s
-.PHONY : 3SVIZplier.s
+3SVIZgongtest.s: 3SVIZgongtest.cpp.s
+.PHONY : 3SVIZgongtest.s
 
 # target to generate assembly for a file
-3SVIZplier.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZplier.dir/build.make CMakeFiles/3SVIZplier.dir/3SVIZplier.cpp.s
-.PHONY : 3SVIZplier.cpp.s
+3SVIZgongtest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.s
+.PHONY : 3SVIZgongtest.cpp.s
 
 CollisionDetection.o: CollisionDetection.cpp.o
 .PHONY : CollisionDetection.o
@@ -457,7 +457,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... 3SVIZplier"
+	@echo "... 3SVIZgongtest"
 	@echo "... CollisionDetection"
 	@echo "... Computepointspose"
 	@echo "... Planefitting"
@@ -466,9 +466,9 @@ help:
 	@echo "... Pointviewer"
 	@echo "... computeangle"
 	@echo "... cylinderfitting"
-	@echo "... 3SVIZplier.o"
-	@echo "... 3SVIZplier.i"
-	@echo "... 3SVIZplier.s"
+	@echo "... 3SVIZgongtest.o"
+	@echo "... 3SVIZgongtest.i"
+	@echo "... 3SVIZgongtest.s"
 	@echo "... CollisionDetection.o"
 	@echo "... CollisionDetection.i"
 	@echo "... CollisionDetection.s"

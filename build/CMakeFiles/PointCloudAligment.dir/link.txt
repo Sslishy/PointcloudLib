@@ -1,1 +1,1 @@
-/bin/c++ -fPIC -g -shared -Wl,-soname,libPointCloudAligment.so -o libPointCloudAligment.so CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o   -L/usr/local/lib 
+/bin/x86_64-linux-gnu-g++-8 -fPIC -shared -Wl,-soname,libPointCloudAligment.so -o libPointCloudAligment.so CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o   -L/usr/local/lib 

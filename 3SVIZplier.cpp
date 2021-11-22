@@ -17,6 +17,64 @@
 #include"PointCloudAligment.h"
 #include"Pointviewer.h"
 using namespace std::chrono_literals;
+bool isRotationMatirx(Eigen::Matrix3d R)
+{
+    double err=1e-6;
+    Eigen::Matrix3d shouldIdenity;
+    shouldIdenity=R*R.transpose();
+    Eigen::Matrix3d I=Eigen::Matrix3d::Identity();
+    return (shouldIdenity - I).norm() < err;
+}
+Eigen::Matrix3d rotation_between_vectors_to_matrix(const Eigen::Vector3d v1, const Eigen::Vector3d v2)
+{
+    Eigen::Matrix3d m1, m2;
+	Eigen::Vector3d axis,axis2,axis3;
+    axis = v1.cross(v2);
+    axis.normalize();
+	axis2 = axis.cross(v1);
+	axis3 = axis.cross(v2);
+    /* construct 2 matrices */
+	m1 << 
+		v1[0], v1[1], v1[2], 
+		axis[0], axis[1], axis[2], 
+		axis2[0], axis2[1], axis2[2];
+	m2 << 
+		v2[0], v2[1], v2[2], 
+		axis[0], axis[1], axis[2], 
+		axis3[0], axis3[1], axis3[2];
+    /* calculate the difference between m1 and m2 */
+    m1.transpose();
+
+    Eigen::Matrix3d matrix = m2 * m1;
+
+    return matrix;
+}
+Eigen::Vector3d rotationMatrixToEulerAngles(Eigen::Matrix3d &R)
+{
+    //assert(isRotationMatirx(R));
+    double sy = sqrt(R(0,0) * R(0,0) + R(1,0) * R(1,0));
+    bool singular = sy < 1e-6;
+    double x, y, z;
+    if (!singular)
+    {
+        x = atan2( R(2,1), R(2,2));
+        y = atan2(-R(2,0), sy);
+        z = atan2( R(1,0), R(0,0));
+		x = (x * 180) / M_PI;
+		y = (y * 180) / M_PI;
+		z = (z * 180) / M_PI;
+    }
+    else
+    {
+        x = atan2(-R(1,2), R(1,1));
+        y = atan2(-R(2,0), sy);
+        z = 0;
+		x = (x * 180) / M_PI;
+		y = (y * 180) / M_PI;
+		z = (z * 180) / M_PI;
+    }
+    return {x, y, z};
+}
 void GetCenter(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out,pcl::PointXYZ &mid23,pcl::PointXYZ &mid45)
 {
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new pcl::PointCloud<pcl::PointXYZ>);
@@ -45,7 +103,7 @@ void GetCenter(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointClo
 	Point2f rect[4];
 	pointbox.points(rect);
 	pcl::PointXYZ point2,point3,point4,point5,pointcenter_;
-	pcl::visualization::PCLVisualizer viewer("viewer");
+	//pcl::visualization::PCLVisualizer viewer("viewer");
 	//getCross(rect[0].x,rect[0].y,rect[2].x,rect[2].y,rect[1].x,rect[1].y,rect[3].x,rect[3].y,centerxy);
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloudmid(new pcl::PointCloud<pcl::PointXYZ>);
 	cloudmid->points.resize(1);
@@ -58,8 +116,8 @@ void GetCenter(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointClo
 	cloudmid->points[0].x = pointcenter_.x;
 	cloudmid->points[0].y = pointcenter_.y;
 	cloudmid->points[0].z = pointcenter_.z;
-	viewer.addPointCloud(cloud1,"cloud");
-	viewer.addCoordinateSystem();	
+	//viewer.addPointCloud(cloud1,"cloud");
+	//viewer.addCoordinateSystem();	
 	point2.x = 0;
 	point2.y = rect[0].y - 100;
 	point2.z = rect[0].x - 100;
@@ -85,8 +143,8 @@ void GetCenter(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointClo
     mid45.x = (point4.x + point5.x)/2;
     mid45.y = (point4.y + point5.y)/2;
     mid45.z = (point4.z + point5.z)/2;
-    viewer.addSphere(mid23,r1/2,"5");
-    viewer.addSphere(mid45,r1/2,"6");
+    //viewer.addSphere(mid23,r1/2,"5");
+    //viewer.addSphere(mid45,r1/2,"6");
     radius = r1;
     }
     else
@@ -97,8 +155,8 @@ void GetCenter(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointClo
     mid45.x = (point3.x + point4.x)/2;
     mid45.y = (point3.y + point4.y)/2;
     mid45.z = (point3.z + point4.z)/2;
-     viewer.addSphere(mid23,r/2,"5");
-    viewer.addSphere(mid45,r/2,"6");
+     //viewer.addSphere(mid23,r/2,"5");
+    //viewer.addSphere(mid45,r/2,"6");
     radius =r;
     }
     
@@ -129,7 +187,7 @@ void GetCenter(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointClo
        {
            break;
        }
-       viewer.addSphere(pointo,0.005,to_string(i)+"xyo");
+       //viewer.addSphere(pointo,0.005,to_string(i)+"xyo");
     }
 	pcl::PointCloud<pcl::PointXYZ>::Ptr pointcentercloud(new pcl::PointCloud<pcl::PointXYZ>);
 	
@@ -168,14 +226,14 @@ void GetCenter(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointClo
 	point5.x = 0;
 	point5.y = rect[3].y - 100;
 	point5.z = rect[3].x - 100;*/
-	viewer.addSphere(point2,0.005,"1");
+	/*viewer.addSphere(point2,0.005,"1");
 	viewer.addSphere(point3,0.005,"2");
 	viewer.addSphere(point4,0.005,"3");
 	viewer.addSphere(point5,0.005,"4");
 	viewer.addLine(point2,point3,"line");
 	viewer.addLine(point3,point4,"line1");
 	viewer.addLine(point4,point5,"line2");
-	viewer.addLine(point5,point2,"line3");
+	viewer.addLine(point5,point2,"line3");*/
 	//viewer.addLine(point2,point4,"l1");
 	//viewer.addLine(point3,point5,"l2");
 	//viewer.addSphere(pointcenter_,0.02,"5");
@@ -234,12 +292,12 @@ main(int argc, char **argv) {
 	
 	//提取平面点云
 	Planefitting plane;
-	plane.SetDistanceThreshold(0.002);
+	plane.SetDistanceThreshold(0.004);
 	plane.SetMaxIterations(100);
 	plane.extract(target_cloud,target_cloud_,f);
     PointProcess pp;
     pp.SetStddevMulThresh(1);
-	pp.SetK(300);
+	pp.SetK(20);
     pp.Removepoint(target_cloud_);
     Computepointspose cp;
 	pcl::PointXYZ mid23,mid45,xpoint;
@@ -250,6 +308,10 @@ main(int argc, char **argv) {
 	normal_Z[0] = normal;
 	ca.ComputeDirection(normal_Z,normal_X,normal_Y);
 	ca.computeRPY(normal_Z,normal_X,normal_Y,RPYList);
+	cout << RPYList[0] <<endl;
+	Mat r;
+	r = ca.eulerAnglesToRotationMatrix(RPYList[0]);
+	cout << ca.rotationMatrixToEulerAngles(r) <<endl;
 	float d1,d2;
 	d1 = sqrt((center.x -mid23.x)*(center.x -mid23.x) + (center.y -mid23.y)*(center.y -mid23.y) + (center.z -mid23.z)*(center.z -mid23.z));
 	d2 = sqrt((center.x -mid45.x)*(center.x -mid45.x) + (center.y -mid45.y)*(center.y -mid45.y) + (center.z -mid45.z)*(center.z -mid45.z));
@@ -259,24 +321,44 @@ main(int argc, char **argv) {
 		xpoint.x = (mid23.x - center.x)/d1 + center.x;
 		xpoint.y = (mid23.y - center.y)/d1 + center.y;
 		xpoint.z = (mid23.z - center.z)/d1 + center.z;
-		cout << sqrt((center.x -xpoint.x)*(center.x -xpoint.x) + (center.y -xpoint.y)*(center.y -xpoint.y) + (center.z -xpoint.z)*(center.z -xpoint.z)) <<endl;
 		Eigen::Vector3d rx(xpoint.x - center.x, xpoint.y - center.y, xpoint.z - center.z),rz(normal.normal_x,normal.normal_y,normal.normal_z);
+		rx.normalize();
+		rz.normalize();
 		Eigen::Vector3d ry = rz.cross(rx);
-			Mat rpy = (cv::Mat_<double>(3, 3) <<
+		
+		//cout<<rotation_between_vectors_to_matrix(rx,rz)<<endl;
+		ry.normalize();
+		/*rx = ry.cross(rz);
+		rx.normalize();*/
+		Eigen::Matrix3d rotation_matrix;
+		rotation_matrix << 
+		1, 0, 0, 
+		0, 1, 0,
+		rz[0], rz[1], rz[2]; 
+		Eigen::Matrix3d rotation_matrix_;
+		rotation_matrix_ << 
 		rx[0], rx[1], rx[2], 
-		ry[0], ry[1], ry[2], 
-		rz[0], rz[1], rz[2]
-		);;
-		cout << ca.rotationMatrixToEulerAngles(rpy)<<endl;
-		/*Vec3b rz = ca.rotationMatrixToEulerAngles(rpy);
-		cout << rz <<endl;
-		rpyreal = ca.eulerAnglesToRotationMatrix(RPYList[0]);
-		RPYList[0] = Vec3b(0,0,rz[0]);
+		ry[0], ry[1], ry[2],
+		0, 0, 1; 
+		Eigen::Matrix3d R = Eigen::AngleAxisd(M_PI, Eigen::Vector3d(0, 0, 1)).toRotationMatrix();
+		rotation_matrix =  rotation_matrix * R;
+		Eigen::Vector3d rpyangle = rotationMatrixToEulerAngles(rotation_matrix);
+		rpyangle[2] = 0;
+		RPYList[0][0] = rpyangle[0]; RPYList[0][1] = rpyangle[1]; RPYList[0][2] = rpyangle[2];
 		cout << RPYList[0] <<endl;
-		rpy = ca.eulerAnglesToRotationMatrix(RPYList[0]);
-		rpyreal = rpyreal*rpy ;
-		cout << "d1 > d2" <<endl;*/
-		rpyreal = ca.eulerAnglesToRotationMatrix(ca.rotationMatrixToEulerAngles(rpy));
+		 r = ca.eulerAnglesToRotationMatrix(RPYList[0]);
+		Eigen::Matrix3d rotation_matrix_rpy;
+		rotation_matrix_rpy << 
+		r.at<double>(0,0), r.at<double>(0,1), r.at<double>(0,2), 
+		r.at<double>(1,0), r.at<double>(1,1), r.at<double>(1,2),
+		r.at<double>(2,0), r.at<double>(2,1), r.at<double>(2,2); 
+		Eigen::Vector3d rzangle = rotationMatrixToEulerAngles(rotation_matrix_);
+		cout << rzangle <<endl;
+		R = Eigen::AngleAxisd(CV_PI/180 * -rzangle[2], Eigen::Vector3d(0, 0, 1)).toRotationMatrix();
+		cout << rotationMatrixToEulerAngles(R).transpose() <<endl;
+		cout << rotationMatrixToEulerAngles(rotation_matrix_rpy).transpose() <<endl;
+		rotation_matrix_rpy =   rotation_matrix_rpy *R ;
+		cout << rotationMatrixToEulerAngles(rotation_matrix_rpy).transpose() <<endl;
 		  Pointviewer pv;
     pv.simpleVisN(target_cloud_out,target_cloud_,center,rx,ry,rz);
 	}
@@ -285,29 +367,31 @@ main(int argc, char **argv) {
 		xpoint.x = (mid45.x - center.x)/d2 + center.x;
 		xpoint.y = (mid45.y - center.y)/d2 + center.y;
 		xpoint.z = (mid45.z - center.z)/d2 + center.z;
-		cout << sqrt((center.x -xpoint.x)*(center.x -xpoint.x) + (center.y -xpoint.y)*(center.y -xpoint.y) + (center.z -xpoint.z)*(center.z -xpoint.z)) <<endl;
-			/*Mat rpy = (cv::Mat_<double>(3, 3) <<
-		1, 0, 0, 
-		0, 1, 0, 
-		center.x -xpoint.x, center.y -xpoint.y, center.z -xpoint.z
-		);;
-		Vec3b rz = ca.rotationMatrixToEulerAngles(rpy);
-		cout << rz <<endl;
-		rpyreal = ca.eulerAnglesToRotationMatrix(RPYList[0]);
-		RPYList[0] = Vec3b(0,0,rz[0]);
-		cout << RPYList[0] <<endl;
-		rpy = ca.eulerAnglesToRotationMatrix(RPYList[0]);
-		rpyreal = rpyreal*rpy;
-		cout << "d2 > d1" <<endl;*/
-	Eigen::Vector3d rx(xpoint.x - center.x, xpoint.y - center.y, xpoint.z - center.z),rz(normal.normal_x,normal.normal_y,normal.normal_z);
+		Eigen::Vector3d rx(xpoint.x - center.x, xpoint.y - center.y, xpoint.z - center.z),rz(normal.normal_x,normal.normal_y,normal.normal_z);
+		rx.normalize();
+		rz.normalize();
 		Eigen::Vector3d ry = rz.cross(rx);
-			Mat rpy = (cv::Mat_<double>(3, 3) <<
+		//cout<<rotation_between_vectors_to_matrix(rx,rz)<<endl;
+		ry.normalize();
+		/*rx = ry.cross(rz);
+		rx.normalize();*/
+		/*Eigen::Matrix3d rotation_matrix;
+		rotation_matrix << 
 		rx[0], rx[1], rx[2], 
-		ry[0], ry[1], ry[2], 
-		rz[0], rz[1], rz[2]
-		);;
-		cout << ca.rotationMatrixToEulerAngles(rpy)<<endl;
-		rpyreal = ca.eulerAnglesToRotationMatrix(ca.rotationMatrixToEulerAngles(rpy));
+		ry[0], ry[1], ry[2],
+		rz[0], rz[1], rz[2]; */
+		cout << "1" <<endl;
+		Eigen::Matrix3d rotation_matrix;
+		rotation_matrix << 
+		1, 0, 0, 
+		0, 1, 0,
+		rz[0], rz[1], rz[2]; 
+		Eigen::Matrix3d R = Eigen::AngleAxisd(M_PI, Eigen::Vector3d(0, 0, 1)).toRotationMatrix();
+		rotation_matrix =  rotation_matrix * R;
+		//rotation_matrix.normalize();
+		//rotation_matrix = rotation_between_vectors_to_matrix(rx,rz);
+		cout << rotation_matrix <<endl;
+		cout << rotationMatrixToEulerAngles(rotation_matrix).transpose() <<endl;
 		  Pointviewer pv;
     pv.simpleVisN(target_cloud_out,target_cloud_,center,rx,ry,rz);
 	}

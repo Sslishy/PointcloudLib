@@ -73,15 +73,15 @@ CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o: CMakeFiles/Collision
 CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o: ../CollisionDetection.cpp
 CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o: CMakeFiles/CollisionDetection.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o -MF CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o.d -o CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o -c /home/slishy/Code/class/lib/CollisionDetection.cpp
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o -MF CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o.d -o CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o -c /home/slishy/Code/class/lib/CollisionDetection.cpp
 
 CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.i"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/CollisionDetection.cpp > CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.i
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/CollisionDetection.cpp > CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.i
 
 CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.s"
-	/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/CollisionDetection.cpp -o CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.s
+	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/CollisionDetection.cpp -o CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.s
 
 # Object files for target CollisionDetection
 CollisionDetection_OBJECTS = \
