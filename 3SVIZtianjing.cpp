@@ -51,14 +51,24 @@ int main(int argc, char** argv)
     pp.SetK(300);
     pp.SetStddevMulThresh(1);
     pp.Removepoint(cloud_in);
+    pp.SetK(50);
+    pp.SetStddevMulThresh(1);
     pp.Removepoint(cloud_in);
-    pp.Removepoint(cloud_in);
+    
     pcl::PointXYZ pointmin,pointmax;
     pcl::getMinMax3D(*cloud_in,pointmin,pointmax);
+    if ((pointmax.z - pointmin.z)> 0.130)
+    {
+        cout << 1 <<endl;
+        pp.SetK(100);
+        pp.SetStddevMulThresh(1);
+        pp.Removepoint(cloud_in);
+        pcl::getMinMax3D(*cloud_in,pointmin,pointmax);
+    }
     pcl::PassThrough<pcl::PointXYZ> pass;
     pass.setInputCloud(cloud_in);         
     pass.setFilterFieldName("z");      
-    pass.setFilterLimits(pointmax.z - 0.02,pointmax.z);    
+    pass.setFilterLimits(pointmax.z - 0.03,pointmax.z);    
     pass.filter(*cloud_in); 
     pcl::io::savePCDFile("1.pcd",*cloud_in);
    // pcl::io::savePCDFile("/home/slishy/Code/PCD/circle/5.pcd",*cloud_in_);     
@@ -69,8 +79,13 @@ int main(int argc, char** argv)
     //pcl::io::savePCDFile("/home/slishy/Code/PCD/circle/2.pcd",*cloud_out);
     Computepointspose cp;
     cp.GetCircleCenter(cloud,center);
+    computeangle ca;
+    pcl::Normal N;
+    cp.computePointNormal(cloud,center,N);
+    Eigen::Vector3f RPY;
+    ca.computeRPY(N,RPY);
     //cp.GetCenter(cloud_in,center);
-    cout << center<<endl;
+    cout << center<< ";"<<RPY.transpose()<< endl;
     Pointviewer pv;
-    pv.simpleVisN(cloud_out,cloud,center);
+    pv.simpleVisN(cloud_in,cloud,center);
 }
