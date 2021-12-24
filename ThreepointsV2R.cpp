@@ -18,20 +18,13 @@
 #include"Pointviewer.h"
 using namespace cv;
 using namespace std;
-void save2xml(const Mat& RT)
-{
-	time_t tm;
-	time(&tm);
-	struct tm* t2 = localtime(&tm);
-	char buff[1024];
-	strftime(buff, sizeof(buff), "%c", t2);
-	string inCailFilePath = "D:/chessborad/V2Rcalibration.xml";
-	FileStorage inCailfs(inCailFilePath, FileStorage::WRITE);
-	inCailfs << "calibration_time" << buff;
-	inCailfs << "V2RMatrix" << RT;
-	inCailfs.release();
-}
-cv::Mat Get3DR_TransMatrix(const std::vector<cv::Point3f>& srcPoints, const std::vector<cv::Point3f>& dstPoints)
+#include <opencv2/opencv.hpp>
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+using namespace cv;
+cv::Mat Get3DR_TransMatrix(const std::vector<cv::Point3d>& srcPoints, const std::vector<cv::Point3d>& dstPoints)
 {
 	double srcSumX = 0.0f;
 	double srcSumY = 0.0f;
@@ -113,67 +106,68 @@ cv::Mat Get3DR_TransMatrix(const std::vector<cv::Point3f>& srcPoints, const std:
 
 	return R_T;
 }
-
 int main()
 {
-		std::vector<cv::Point3f> srcPoints;
-		std::vector<cv::Point3f>  dstPoints;
-		float NN = 0.001;
-		//src = cam  dst = robot
-		srcPoints.push_back(cv::Point3f(1.52995406e+03, 7.02825714e+02, 1177));
-		dstPoints.push_back(cv::Point3f(1.57594697e+03, 8.57857210e+02, 1177));
-
-		srcPoints.push_back(cv::Point3f(1.57659572e+03, 7.84670712e+02, 1177));
-		dstPoints.push_back(cv::Point3f(1.66821752e+03, 8.41776870e+02, 1177));
-		
-		srcPoints.push_back(cv::Point3f(1.65865487e+03, 7.38718511e+02, 1177));
-		dstPoints.push_back(cv::Point3f(1.65287980e+03, 7.49399435e+02, 1177));
-		pcl::PointCloud<pcl::PointXYZ>::Ptr xyz(new pcl::PointCloud<pcl::PointXYZ>);
-		xyz->points.resize(3);
-		xyz->points[0] = pcl::PointXYZ(1.52995406e+03, 7.02825714e+02, 1177);
-		xyz->points[1] = pcl::PointXYZ(1.57659572e+03, 7.84670712e+02, 1177);
-		xyz->points[2] = pcl::PointXYZ(1.65865487e+03, 7.38718511e+02, 1177);
-
-		cv::Mat RT = Get3DR_TransMatrix(srcPoints, dstPoints);
-		Eigen::Matrix4f transformation;
-		transformation(0,0) = RT.at<double>(0,0);
-		transformation(0,1) = RT.at<double>(0,1);
-		transformation(0,2) = RT.at<double>(0,2);
-		transformation(0,3) = RT.at<double>(0,3);
-
-		transformation(1,0) = RT.at<double>(1,0);
-		transformation(1,1) = RT.at<double>(1,1);
-		transformation(1,2) = RT.at<double>(1,2);
-		transformation(1,3) = RT.at<double>(1,3);
-
-		transformation(2,0) = RT.at<double>(2,0);
-		transformation(2,1) = RT.at<double>(2,1);
-		transformation(2,2) = RT.at<double>(2,2);
-		transformation(2,3) = RT.at<double>(2,3);
-
-		transformation(3,0) = 0;
-		transformation(3,1) = 0;
-		transformation(3,2) = 0;
-		transformation(3,3) = 0; 
-		cout << transformation <<endl;
-		pcl::transformPointCloud(*xyz,*xyz,transformation);
-		 for (size_t i = 0; i < 3; i++)
-		 {
-			cout << xyz->points[i]<<endl;
-		 }
-		 
-		for (int r = 0; r < RT.rows; r++)
-		{
-			for (int c = 0; c < RT.cols; c++)
-			{
-				printf("%f, ", RT.at<double>(r, c));
-			}
-			printf("\n");
-		}
-		save2xml(RT);
-		printf("**************************************\n");
-		getchar();
+	vector<cv::Point3d> cam(4);
+	cam[0] = Point3d(0.078209392726,0.003562615719,0.794142544270);
+	cam[1] = Point3d(0.070536784828,0.103486642241,0.767597019672);
+	cam[2] = Point3d(-0.096156649292,0.094384290278,0.782210350037);
+	cam[3] = cam[0] + (cam[2] -cam[1]);
 	
+	vector<cv::Point3d> robot(4);
+	robot[0] = Point3d(963.6 * 0.001 , -106.5 * 0.001 , 160.9* 0.001);
+	robot[1] = Point3d(860.0 * 0.001 , -97.9 * 0.001 , 160.9* 0.001);
+	robot[2] = Point3d(873.6 * 0.001 , 68.9 * 0.001 , 160.9* 0.001);
+	robot[3] = robot[0] + (robot[2] -robot[1]);
+	Mat matrix;
+	Mat out;
+	matrix = Get3DR_TransMatrix(cam, robot);
+	//cv::estimateAffine3D(cam,robot,matrix,out,3.0,0.99);
+	pcl::PointCloud<pcl::PointXYZ>::Ptr campose(new pcl::PointCloud<pcl::PointXYZ>);
+	campose->points.resize(1);
+	campose->points[0].x = 0.118590;
+	campose->points[0].y = -0.026332;
+	campose->points[0].z = 0.67;
+	/*campose->points[0].x = 908.9 * 0.001;
+	campose->points[0].y = 92.5* 0.001;
+	campose->points[0].z = 542.3* 0.001;*/
+	Eigen::Matrix4f matrix1;
+	cv::cv2eigen(matrix,matrix1);
+
+	computeangle ca;
+	//chu shi biao ding wei zi
+	Eigen::Vector3f rpy; 
+	rpy = Eigen::Vector3f(-23.539 , 38.26 , 75.483);
+	Eigen::Matrix3f robot2robot = ca.eulerAnglesToRotationMatrix(rpy);
+	Eigen::Matrix4f robot2robot1;
+	robot2robot1.block<3,3>(0,0) = robot2robot.block<3,3>(0,0);
+	robot2robot1(0,3) = (789.067) *0.001;
+	robot2robot1(1,3) = (49.985) *0.001;
+	robot2robot1(2,3) = (614.627) *0.001;
+	robot2robot1(3,3) = 1;
+	// bian huan hou de wei zhi
+	Eigen::Vector3f rpy1;
+	rpy1 = Eigen::Vector3f(12.8 , 39.1 , 117.1);
+	Eigen::Matrix3f robot2robot2 = ca.eulerAnglesToRotationMatrix(rpy1);
+	Eigen::Matrix4f robot2robot3;
+	robot2robot3.block<3,3>(0,0) = robot2robot2.block<3,3>(0,0);
+	robot2robot3(0,3) = (908.9) *0.001;
+	robot2robot3(1,3) = (92.5) *0.001;
+	robot2robot3(2,3) = (542.3) *0.001;
+	robot2robot3(3,3) = 1;
+	matrix1(3,3) = 1;
+	matrix1(3,0) = 0;
+	Eigen::Matrix4f robot2posetorobot1pose;
+	robot2posetorobot1pose = robot2robot3 * robot2robot1.inverse();
+	cout << robot2posetorobot1pose <<endl;
+	Eigen::Matrix4f camtobase;
+	camtobase = robot2posetorobot1pose * matrix1;
+	cout << camtobase <<endl;
+	pcl::transformPointCloud(*campose,*campose,camtobase.inverse());
+	//pcl::transformPointCloud(*campose,*campose,robot2posetorobot1pose.inverse());
+	//pcl::transformPointCloud(*campose,*campose,robot2posetorobot1pose.inverse());
+	for (size_t i = 0; i < 1; i++)
+	{
+		cout << campose->points[i] <<endl;
+	}
 }
-
-
