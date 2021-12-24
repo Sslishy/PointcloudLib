@@ -59,7 +59,6 @@ int main(int argc, char** argv)
     pcl::getMinMax3D(*cloud_in,pointmin,pointmax);
     if ((pointmax.z - pointmin.z)> 0.130)
     {
-        cout << 1 <<endl;
         pp.SetK(100);
         pp.SetStddevMulThresh(1);
         pp.Removepoint(cloud_in);
