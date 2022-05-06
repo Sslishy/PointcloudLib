@@ -1,0 +1,141 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "class",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "3SVIZxizang::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-3SVIZxizang-Debug-ffe5559e67729f561c2e.json",
+					"name" : "3SVIZxizang",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CollisionDetection::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CollisionDetection-Debug-85a931d4f54c90bc334b.json",
+					"name" : "CollisionDetection",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Computepointspose::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Computepointspose-Debug-6639461910a7d2b10e5a.json",
+					"name" : "Computepointspose",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Linefitting::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Linefitting-Debug-2b12969de126a3cebef2.json",
+					"name" : "Linefitting",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Planefitting::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Planefitting-Debug-2c2c33636a289da2f9da.json",
+					"name" : "Planefitting",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PointCloudAligment::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PointCloudAligment-Debug-fe68458e6a70cf45885e.json",
+					"name" : "PointCloudAligment",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PointProcess::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PointProcess-Debug-4c3eac302f5c0537f5f5.json",
+					"name" : "PointProcess",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Pointviewer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Pointviewer-Debug-0d02840885b22960b37a.json",
+					"name" : "Pointviewer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "computeangle::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-computeangle-Debug-6c8e29a4da80e20d98c7.json",
+					"name" : "computeangle",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cylinderfitting::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cylinderfitting-Debug-744d3ac8799b5e8e6095.json",
+					"name" : "cylinderfitting",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/slishy/Code/class/lib/build",
+		"source" : "/home/slishy/Code/class/lib"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

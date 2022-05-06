@@ -75,7 +75,7 @@ void PointCloudAligment::Aligment(pcl::PointCloud<pcl::PointXYZ>::Ptr goldsimple
 	align_.setSourceFeatures(goldsimple_features);
 	align_.setInputTarget(cloud_in_);
 	align_.setTargetFeatures(cloudin_features);
-	align_.setMaximumIterations(50000); // Number of RANSAC iterations
+	align_.setMaximumIterations(10000); // Number of RANSAC iterations
 	align_.setNumberOfSamples(3); // 在对象和场景之间进行采样的点对应数，至少需要N个点才能进行计算
 	align_.setCorrespondenceRandomness(5); // 在N个最佳匹配之间进行性随机选择
 	align_.setSimilarityThreshold(0.8f); // 根据采样之间的距离位置不变的几何一致性，尽早消除不良影响

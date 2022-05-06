@@ -73,15 +73,15 @@ CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o: CMakeFiles/Computepoin
 CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o: ../Computepointspose.cpp
 CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o: CMakeFiles/Computepointspose.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o -MF CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o.d -o CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o -c /home/slishy/Code/class/lib/Computepointspose.cpp
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o -MF CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o.d -o CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o -c /home/slishy/Code/class/lib/Computepointspose.cpp
 
 CMakeFiles/Computepointspose.dir/Computepointspose.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Computepointspose.dir/Computepointspose.cpp.i"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/Computepointspose.cpp > CMakeFiles/Computepointspose.dir/Computepointspose.cpp.i
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/Computepointspose.cpp > CMakeFiles/Computepointspose.dir/Computepointspose.cpp.i
 
 CMakeFiles/Computepointspose.dir/Computepointspose.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Computepointspose.dir/Computepointspose.cpp.s"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/Computepointspose.cpp -o CMakeFiles/Computepointspose.dir/Computepointspose.cpp.s
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/Computepointspose.cpp -o CMakeFiles/Computepointspose.dir/Computepointspose.cpp.s
 
 # Object files for target Computepointspose
 Computepointspose_OBJECTS = \

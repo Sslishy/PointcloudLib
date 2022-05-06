@@ -16,221 +16,94 @@
 #include"PointProcess.h"
 #include"PointCloudAligment.h"
 #include <pcl/filters/passthrough.h>
+string golden_pcd;
+string target_pcd;
+float X,Y,Z,RX,RY,RZ;
+int display;
+void readconfig()
+{
+  cv::FileStorage fs_read("config.yaml", cv::FileStorage::READ);
+  string path;
+  fs_read["golden_pcd"] >> golden_pcd;
+  fs_read["target_pcd"] >> target_pcd;  
+  fs_read["X"] >> X;  
+  fs_read["Y"] >> Y;
+  fs_read["Z"] >> Z;  
+  fs_read["RX"] >> RX;  
+  fs_read["RY"] >> RY;  
+  fs_read["RZ"] >> RZ;    
+  fs_read["display"] >> display;  
+  fs_read.release();
+}
 int main(int argc, char** argv) {
-    string o = "o";
-    string x = "x";
-    string y = "y";
-   if (argv[1] == x)
-    {
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::io::loadPCDFile("/home/slishy/Code/PCD/2/x.pcd",*cloud);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudorg(new pcl::PointCloud<pcl::PointXYZ>);
-    *cloudorg = *cloud;
-    Planefitting pf;
-    pf.SetDistanceThreshold(0.005);
-    pf.extract(cloud,cloud1,"false");
-    pcl::PointXYZ pointmax,pointmin,pointcenter ,p1 ,p2;
-    pcl::getMinMax3D(*cloud1,pointmin,pointmax);
-    vector<pcl::PointXYZ> index;
-    index.resize(cloud1->points.size());
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudmid(new pcl::PointCloud<pcl::PointXYZ>);
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudmid1(new pcl::PointCloud<pcl::PointXYZ>);
-   cout << (pointmax.x - pointmin.x)/0.002<<endl;
-   float jj = pointmin.x;
-    for (size_t i = 0; i < (pointmax.x - pointmin.x)/0.002; i++)
-    {
-
-        pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud(cloud1);         
-        pass.setFilterFieldName("x");      
-        pass.setFilterLimits(jj,jj + 0.002);    
-        pass.filter(*cloudmid); 
-        pcl::getMinMax3D(*cloudmid,p1,p2);
-        index.push_back(p2);
-        jj = jj + 0.002;
-         for (size_t j = 0; j <cloudmid->points.size(); j++)
-        {
-           if (p2.y == cloudmid->points[j].y)
-            {
-                cloudmid1->points.push_back(cloudmid->points[j]);
-            }
-        }
-    }
-    float k = pointmin.y;
-    for (size_t i = 0; i < (pointmax.y - pointmin.y)/0.001; i++)
-    {
-        pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud(cloud1);         
-        pass.setFilterFieldName("y");      
-        pass.setFilterLimits(k,k + 0.002);    
-        pass.filter(*cloudmid); 
-        pcl::getMinMax3D(*cloudmid,p1,p2);
-        index.push_back(p1);
-        k = k + 0.002;
-         for (size_t j = 0; j <cloudmid->points.size(); j++)
-        {
-           if (p1.x == cloudmid->points[j].x)
-            {
-                cloudmid1->points.push_back(cloudmid->points[j]);
-            }
-        }
-    }
+    readconfig();
+    pcl::PointCloud<pcl::PointXYZ>::Ptr target(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr golden(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr target_backup(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr golden_backup(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr aligentarget(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr point(new pcl::PointCloud<pcl::PointXYZ>);
+    point->points.resize(1);
+    point->points[0].x = X;
+    point->points[0].y = Y;
+    point->points[0].z = Z;
+    Eigen::Vector3f rpy;
+    rpy = Eigen::Vector3f(RX,RY,RZ);
+    Eigen::Matrix3f rpymatrix;
+    
+    pcl::io::loadPCDFile(golden_pcd,*golden);
+    pcl::io::loadPCDFile(target_pcd,*target);
+    pcl::copyPointCloud(*golden,*golden_backup);
+    pcl::copyPointCloud(*target,*target_backup);
     PointProcess pp;
-    pp.SetK(30);
+    pp.SetLeafSize(0.01);
+    pp.DownSimple(golden);
+    pp.DownSimple(target);
+    pp.SetK(300);
     pp.SetStddevMulThresh(1);
-    pp.Removepoint(cloudmid1);
-    pp.Removepoint(cloudmid1);
-    //pp.smoothxyz(cloudmid1);
-    int PointCloudindex;
-    Computepointspose cp;
-    cp.PointCloudGetCrossPoint(cloudmid1, PointCloudindex);
-   
-   cout<< cloudmid1->points[PointCloudindex].x <<";" << cloudmid1->points[PointCloudindex].y <<";" << cloudmid1->points[PointCloudindex].z << endl;
-    Pointviewer pv;
-    pv.simpleVisN(cloudmid1,cloudorg,cloudmid1->points[PointCloudindex]);
-    }
-    if (argv[1] == o)
+    pp.Removepoint(target);
+    PointCloudAligment pa;
+    pa.Aligment(golden,target,aligentarget);
+    Eigen::Matrix4f transform;
+    Eigen::Matrix3f transform3x3;
+    pa.Gettransformation(transform);
+    transform3x3.block<3,3>(0,0) = transform.block<3,3>(0,0);
+    pcl::transformPointCloud(*point,*point,transform);
+    pcl::transformPointCloud(*golden_backup,*golden_backup,transform);
+    computeangle ca;
+    rpymatrix = ca.eulerAnglesToRotationMatrix(rpy);
+    rpymatrix = transform3x3 * rpymatrix;
+    pcl::IterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ> icp;
+	icp.setInputSource(golden_backup);
+	icp.setInputTarget(target_backup);
+	icp.setMaximumIterations(50);
+	icp.setMaxCorrespondenceDistance(0.001);
+	icp.setRANSACOutlierRejectionThreshold(0.05);
+	icp.setTransformationEpsilon(1e-6);
+	//icp.setEuclideanFitnessEpsilon(0.0001);
+	pcl::PointCloud<pcl::PointXYZ> Final;
+    icp.align(Final);
+    transform = icp.getFinalTransformation();
+    
+    pcl::transformPointCloud(*golden_backup,*golden_backup,transform);
+    pcl::transformPointCloud(*point,*point,transform);
+    transform3x3.block<3,3>(0,0) = transform.block<3,3>(0,0);
+    rpymatrix = ca.eulerAnglesToRotationMatrix(rpy);
+    rpymatrix = transform3x3 * rpymatrix;
+    rpy = ca.rotationMatrixToEulerAngles(rpymatrix);
+    cout << point->points[0].x << ";" << point->points[0].y << ";" <<point->points[0].z << ";" << rpy[0] <<";"<< rpy[1]<<";"<<rpy[2]<<endl;
+    
+    
+    if(display == 1)
     {
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::io::loadPCDFile("/home/slishy/Code/PCD/2/o.pcd",*cloud);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudorg(new pcl::PointCloud<pcl::PointXYZ>);
-    *cloudorg = *cloud;
-    Planefitting pf;
-    pf.SetDistanceThreshold(0.005);
-    pf.extract(cloud,cloud1,"false");
-    pcl::PointXYZ pointmax,pointmin,pointcenter ,p1 ,p2;
-    pcl::getMinMax3D(*cloud1,pointmin,pointmax);
-    vector<pcl::PointXYZ> index;
-    index.resize(cloud1->points.size());
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudmid(new pcl::PointCloud<pcl::PointXYZ>);
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudmid1(new pcl::PointCloud<pcl::PointXYZ>);
-   cout << (pointmax.x - pointmin.x)/0.002<<endl;
-   float jj = pointmin.x;
-    for (size_t i = 0; i < (pointmax.x - pointmin.x)/0.002; i++)
-    {
-
-        pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud(cloud1);         
-        pass.setFilterFieldName("x");      
-        pass.setFilterLimits(jj,jj + 0.002);    
-        pass.filter(*cloudmid); 
-        pcl::getMinMax3D(*cloudmid,p1,p2);
-        index.push_back(p2);
-        jj = jj + 0.002;
-         for (size_t j = 0; j <cloudmid->points.size(); j++)
+        pcl::visualization::PCLVisualizer::Ptr viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
+        viewer->addCoordinateSystem(0.5);
+        viewer->addPointCloud(golden_backup,pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ>(golden_backup,0.0,0.0,255.0),"cloud");
+        viewer->addPointCloud(target_backup,pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ>(target_backup,0.0,255.0,0.0),"cloud1");
+        while (!viewer->wasStopped())
         {
-           if (p2.y == cloudmid->points[j].y)
-            {
-                cloudmid1->points.push_back(cloudmid->points[j]);
-            }
+            viewer->spinOnce();
         }
-    }
-    float k = pointmin.y;
-    for (size_t i = 0; i < (pointmax.y - pointmin.y)/0.001; i++)
-    {
-        pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud(cloud1);         
-        pass.setFilterFieldName("y");      
-        pass.setFilterLimits(k,k + 0.002);    
-        pass.filter(*cloudmid); 
-        pcl::getMinMax3D(*cloudmid,p1,p2);
-        index.push_back(p2);
-        k = k + 0.002;
-         for (size_t j = 0; j <cloudmid->points.size(); j++)
-        {
-           if (p2.x == cloudmid->points[j].x)
-            {
-                cloudmid1->points.push_back(cloudmid->points[j]);
-            }
-        }
-    }
-    PointProcess pp;
-    pp.SetK(30);
-    pp.SetStddevMulThresh(1);
-    pp.Removepoint(cloudmid1);
-    pp.Removepoint(cloudmid1);
-    //pp.smoothxyz(cloudmid1);
-    int PointCloudindex;
-    Computepointspose cp;
-    cp.PointCloudGetCrossPoint(cloudmid1, PointCloudindex);
-   cout<< cloudmid1->points[PointCloudindex].x <<";" << cloudmid1->points[PointCloudindex].y <<";" << cloudmid1->points[PointCloudindex].z << endl;
-    Pointviewer pv;
-    pv.simpleVisN(cloudmid1,cloudorg,cloudmid1->points[PointCloudindex]);
-    }
-    if (argv[1] == y)
-    {
-    PointProcess pp;
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::io::loadPCDFile("/home/slishy/Code/PCD/1/y.pcd",*cloud);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudorg(new pcl::PointCloud<pcl::PointXYZ>);
-    *cloudorg = *cloud;
-    pp.SetK(50);
-    pp.SetStddevMulThresh(1);
-    pp.Removepoint(cloud);
-    Planefitting pf;
-    pf.SetDistanceThreshold(0.005);
-    pf.extract(cloud,cloud1,"false");
-    pcl::PointXYZ pointmax,pointmin,pointcenter ,p1 ,p2;
-    pcl::getMinMax3D(*cloud1,pointmin,pointmax);
-    vector<pcl::PointXYZ> index;
-    index.resize(cloud1->points.size());
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudmid(new pcl::PointCloud<pcl::PointXYZ>);
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudmid1(new pcl::PointCloud<pcl::PointXYZ>);
-   cout << (pointmax.x - pointmin.x)/0.002<<endl;
-   float jj = pointmin.x;
-    for (size_t i = 0; i < (pointmax.x - pointmin.x)/0.002; i++)
-    {
-
-        pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud(cloud1);         
-        pass.setFilterFieldName("x");      
-        pass.setFilterLimits(jj,jj + 0.002);    
-        pass.filter(*cloudmid); 
-        pcl::getMinMax3D(*cloudmid,p1,p2);
-        index.push_back(p1);
-        jj = jj + 0.002;
-         for (size_t j = 0; j <cloudmid->points.size(); j++)
-        {
-           if (p1.y == cloudmid->points[j].y)
-            {
-                cloudmid1->points.push_back(cloudmid->points[j]);
-            }
-        }
-    }
-    float k = pointmin.y;
-    for (size_t i = 0; i < (pointmax.y - pointmin.y)/0.001; i++)
-    {
-        pcl::PassThrough<pcl::PointXYZ> pass;
-        pass.setInputCloud(cloud1);         
-        pass.setFilterFieldName("y");      
-        pass.setFilterLimits(k,k + 0.002);    
-        pass.filter(*cloudmid); 
-        pcl::getMinMax3D(*cloudmid,p1,p2);
-        index.push_back(p2);
-        k = k + 0.002;
-         for (size_t j = 0; j <cloudmid->points.size(); j++)
-        {
-           if (p2.x == cloudmid->points[j].x)
-            {
-                cloudmid1->points.push_back(cloudmid->points[j]);
-            }
-        }
-    }
-   
-    pp.SetK(30);
-    pp.SetStddevMulThresh(1);
-    pp.Removepoint(cloudmid1);
-    pp.Removepoint(cloudmid1);
-    //pp.smoothxyz(cloudmid1);
-    int PointCloudindex;
-    Computepointspose cp;
-    cp.PointCloudGetCrossPoint(cloudmid1, PointCloudindex);
-   cout<< cloudmid1->points[PointCloudindex].x <<";" << cloudmid1->points[PointCloudindex].y <<";" << cloudmid1->points[PointCloudindex].z << endl;
-    Pointviewer pv;
-    pv.simpleVisN(cloudmid1,cloudorg,cloudmid1->points[PointCloudindex]);
     }
     
 }

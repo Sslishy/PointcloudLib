@@ -122,6 +122,7 @@ int main()
 	Mat matrix;
 	Mat out;
 	matrix = Get3DR_TransMatrix(cam, robot);
+	
 	//cv::estimateAffine3D(cam,robot,matrix,out,3.0,0.99);
 	pcl::PointCloud<pcl::PointXYZ>::Ptr campose(new pcl::PointCloud<pcl::PointXYZ>);
 	campose->points.resize(1);

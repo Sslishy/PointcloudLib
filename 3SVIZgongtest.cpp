@@ -7,9 +7,7 @@
 #include <pcl/filters/statistical_outlier_removal.h>
 #include<math.h>
 #include <ctime>
-#include "Planefitting.h"
 #include"Computepointspose.h"
-#include"computeangle.h" 
 #include"CollisionDetection.h"
 #include"Pointviewer.h"
 #include"cylinderfitting.h"
@@ -95,23 +93,70 @@ void GetWHWithCorner(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::Po
 	projectionTransform.block<3, 3>(0, 0) = eigenVectorsPCA.transpose();
 	projectionTransform.block<3, 1>(0, 3) = -1.f * (projectionTransform.block<3, 3>(0, 0) * pcacentroid.head<3>());
 	pcl::transformPointCloud(*cloud_in, *cloud1, projectionTransform);
+    Pointviewer pv;
+    
 	pcl::PointXYZ minPoint, maxPoint;
+
+    
+    pcl::getMinMax3D(*cloud1, minPoint, maxPoint);
+    pcl::PassThrough<pcl::PointXYZ> pass1;
+    pass1.setInputCloud(cloud1);         
+    pass1.setFilterFieldName("z");      
+    pass1.setFilterLimits(maxPoint.z - 0.05,maxPoint.z);    
+    pass1.filter(*cloudpath); 
+    pcl::getMinMax3D(*cloudpath, minPoint, maxPoint);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr ones(new pcl::PointCloud<pcl::PointXYZ>);
+    for (size_t i = 0; i < cloudpath->points.size(); i++)
+    {
+        if(cloudpath->points[i].y == minPoint.y)
+        {
+            ones->points.push_back(cloudpath->points[i]);
+        }
+    }
+     pcl::getMinMax3D(*cloud1, minPoint, maxPoint);
+    pass1.setInputCloud(cloud1);         
+    pass1.setFilterFieldName("z");      
+    pass1.setFilterLimits(minPoint.z ,maxPoint.z - 0.05);    
+    pass1.filter(*cloudpath1); 
+    pcl::getMinMax3D(*cloudpath1, minPoint, maxPoint);
+    for (size_t i = 0; i < cloudpath1->points.size(); i++)
+    {
+        if(cloudpath1->points[i].y == minPoint.y)
+        {
+            ones->points.push_back(cloudpath1->points[i]);
+        }
+    }
+  
+
+
+
     PointProcess pp;
-    pp.SetK(5);
+    /*pp.SetK(5);
     pp.SetStddevMulThresh(1);
     pp.Removepoint(cloud1);
-    pcl::getMinMax3D(*cloud1, minPoint, maxPoint);
-    pp.MinValues(minPoint.z + 0.005);
-    pp.MaxValues(maxPoint.z - 0.004);
+   */
+    
+    if (ones->points[0].z > ones->points[1].z)
+    {
+      pp.MinValues(ones->points[1].z);
+    pp.MaxValues(ones->points[0].z );
     pp.limitZ(cloud1);
-
-    pp.MinValues(minPoint.y + 0.05);
-    pp.MaxValues(maxPoint.y - 0.005);
-    pp.limitY(cloud1);
+    }
+    else
+    {
+    pp.MinValues(ones->points[0].z);
+    pp.MaxValues(ones->points[1].z );
+    pp.limitZ(cloud1);
+    }
+    pcl::getMinMax3D(*cloud1, minPoint, maxPoint);
     
-    
+   // pp.MinValues(maxPoint.y + 0.005);
+    //pp.MaxValues(minPoint.y - 0.005);
+    //pp.limitY(cloud1);
+   pv.simpleVisN(cloud1);
     pp.SetLeafSize(0.006);
     pp.DownSimple(cloud1);
+     
     pcl::PassThrough<pcl::PointXYZ> pass;
     pass.setInputCloud(cloud1);         
     pass.setFilterFieldName("z");      
@@ -125,7 +170,7 @@ void GetWHWithCorner(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::Po
     pcl::PointXYZ searchPoint;
     for (size_t i = 0; i < cloudpath->points.size(); i++)
     {
-        if (maxPoint.y == cloudpath->points[i].y)
+        if (minPoint.y == cloudpath->points[i].y)
         {
             searchPoint = cloudpath->points[i];
         }
@@ -147,7 +192,7 @@ void GetWHWithCorner(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::Po
     pcl::getMinMax3D(*cloudpath1,minPoint,maxPoint);
      for (size_t i = 0; i < cloudpath1->points.size(); i++)
     {
-        if (maxPoint.y == cloudpath1->points[i].y)
+        if (minPoint.y == cloudpath1->points[i].y)
         {
             searchPoint = cloudpath1->points[i];
         }
@@ -159,11 +204,10 @@ void GetWHWithCorner(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::Po
     {
        cloudpathall->points.push_back(cloudpath1->points[pointIdxNKNSearch[i]]); 
     } 
-    pcl::visualization::PCLVisualizer::Ptr viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
-	viewer->addCoordinateSystem(0.5);
-	//viewer->addPointCloud(cloud_path2,pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ>(cloud_path2,0.0,0.0,255.0),"cloud");
-    viewer->addPointCloud(cloudpathall,pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ>(cloudpathall,255.0,255.0,0.0),"cloud1");
-     viewer->addPointCloud(cloud1,pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ>(cloud1,0.0,255.0,255.0),"cloud2");
+    cout << ones->points[0] <<endl;
+     cout << ones->points[1] <<endl;
+    cloudpathall->points[0] = ones->points[0];
+    cloudpathall->points[10] = ones->points[1];
     pcl::transformPointCloud(*cloudpathall, *cloud_out, projectionTransform.inverse());
 
     /*
@@ -226,6 +270,135 @@ void GetWHWithCorner(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::Po
 	//viewer.addSphere(pointcenter_,0.02,"5");
 	
 }
+void leftpath(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud_out)
+{
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudpath(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudpath1(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudpathall(new pcl::PointCloud<pcl::PointXYZ>);
+	Eigen::Vector4f pcacentroid;
+	pcl::compute3DCentroid(*cloud_in, pcacentroid);
+	Eigen::Matrix3f covariance;
+	pcl::computeCovarianceMatrixNormalized(*cloud_in, pcacentroid, covariance);
+	Eigen::SelfAdjointEigenSolver<Eigen::Matrix3f> eigen_solver(covariance, Eigen::ComputeEigenvectors);
+	Eigen::Matrix3f eigenVectorsPCA = eigen_solver.eigenvectors();
+	eigenVectorsPCA.col(2) = eigenVectorsPCA.col(0).cross(eigenVectorsPCA.col(1));
+	Eigen::Matrix4f projectionTransform(Eigen::Matrix4f::Identity());
+	projectionTransform.block<3, 3>(0, 0) = eigenVectorsPCA.transpose();
+	projectionTransform.block<3, 1>(0, 3) = -1.f * (projectionTransform.block<3, 3>(0, 0) * pcacentroid.head<3>());
+	pcl::transformPointCloud(*cloud_in, *cloud1, projectionTransform);
+    Pointviewer pv;
+    
+	pcl::PointXYZ minPoint, maxPoint;
+
+    
+    pcl::getMinMax3D(*cloud1, minPoint, maxPoint);
+    pcl::PassThrough<pcl::PointXYZ> pass1;
+    pass1.setInputCloud(cloud1);         
+    pass1.setFilterFieldName("z");      
+    pass1.setFilterLimits(maxPoint.z - 0.05,maxPoint.z);    
+    pass1.filter(*cloudpath); 
+    pcl::getMinMax3D(*cloudpath, minPoint, maxPoint);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr ones(new pcl::PointCloud<pcl::PointXYZ>);
+    for (size_t i = 0; i < cloudpath->points.size(); i++)
+    {
+        if(cloudpath->points[i].y == minPoint.y)
+        {
+            ones->points.push_back(cloudpath->points[i]);
+        }
+    }
+     pcl::getMinMax3D(*cloud1, minPoint, maxPoint);
+    pass1.setInputCloud(cloud1);         
+    pass1.setFilterFieldName("z");      
+    pass1.setFilterLimits(minPoint.z ,maxPoint.z - 0.05);    
+    pass1.filter(*cloudpath1); 
+    pcl::getMinMax3D(*cloudpath1, minPoint, maxPoint);
+    for (size_t i = 0; i < cloudpath1->points.size(); i++)
+    {
+        if(cloudpath1->points[i].y == minPoint.y)
+        {
+            ones->points.push_back(cloudpath1->points[i]);
+        }
+    }
+    PointProcess pp;
+    /*pp.SetK(5);
+    pp.SetStddevMulThresh(1);
+    pp.Removepoint(cloud1);
+   */
+    if (ones->points[0].z > ones->points[1].z)
+    {
+      pp.MinValues(ones->points[1].z);
+    pp.MaxValues(ones->points[0].z );
+    pp.limitZ(cloud1);
+    }
+    else
+    {
+    pp.MinValues(ones->points[0].z);
+    pp.MaxValues(ones->points[1].z );
+    pp.limitZ(cloud1);
+    }
+    pcl::getMinMax3D(*cloud1, minPoint, maxPoint);
+    
+   // pp.MinValues(maxPoint.y + 0.005);
+    //pp.MaxValues(minPoint.y - 0.005);
+    //pp.limitY(cloud1);
+   pv.simpleVisN(cloud1);
+    pp.SetLeafSize(0.006);
+    pp.DownSimple(cloud1);
+     
+    pcl::PassThrough<pcl::PointXYZ> pass;
+    pass.setInputCloud(cloud1);         
+    pass.setFilterFieldName("z");      
+    pass.setFilterLimits(maxPoint.z - 0.05,maxPoint.z);    
+    pass.filter(*cloudpath); 
+    pass.setInputCloud(cloud1);         
+    pass.setFilterFieldName("z");      
+    pass.setFilterLimits(minPoint.z ,maxPoint.z - 0.05);    
+    pass.filter(*cloudpath1); 
+    pcl::getMinMax3D(*cloudpath,minPoint,maxPoint);
+    pcl::PointXYZ searchPoint;
+    for (size_t i = 0; i < cloudpath->points.size(); i++)
+    {
+        if (minPoint.y == cloudpath->points[i].y)
+        {
+            searchPoint = cloudpath->points[i];
+        }
+    }
+    pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+    kdtree.setInputCloud(cloudpath);
+    int K = cloudpath->points.size();
+    std::vector<int> pointIdxNKNSearch(K);
+    std::vector<float> pointNKNSquaredDistance(K);
+    kdtree.nearestKSearch(searchPoint, K, pointIdxNKNSearch, pointNKNSquaredDistance);
+    for (size_t i = 0; i < 10; i++)
+    {
+       cloudpathall->points.push_back(cloudpath->points[pointIdxNKNSearch[i]]); 
+    }
+
+
+    kdtree.setInputCloud(cloudpath1);
+    int K1 = cloudpath1->points.size();
+    pcl::getMinMax3D(*cloudpath1,minPoint,maxPoint);
+     for (size_t i = 0; i < cloudpath1->points.size(); i++)
+    {
+        if (minPoint.y == cloudpath1->points[i].y)
+        {
+            searchPoint = cloudpath1->points[i];
+        }
+    }
+    pointIdxNKNSearch.resize(K1);
+    pointNKNSquaredDistance.resize(K1);
+    kdtree.nearestKSearch(searchPoint, K1, pointIdxNKNSearch, pointNKNSquaredDistance);
+    for (size_t i = 0; i < 10; i++)
+    {
+       cloudpathall->points.push_back(cloudpath1->points[pointIdxNKNSearch[i]]); 
+    } 
+    cout << ones->points[0] <<endl;
+     cout << ones->points[1] <<endl;
+    cloudpathall->points[0] = ones->points[0];
+    cloudpathall->points[10] = ones->points[1];
+    pcl::transformPointCloud(*cloudpathall, *cloud_out, projectionTransform.inverse());
+}
 void Getright(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud_out)
 {
 pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new pcl::PointCloud<pcl::PointXYZ>);
@@ -281,16 +454,23 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1(new pcl::PointCloud<pcl::PointXYZ>);
 }
 int main(int argc, char** argv)
 {
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in_(new pcl::PointCloud<pcl::PointXYZ>);
-   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in_(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_right(new pcl::PointCloud<pcl::PointXYZ>);
-     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_left(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_left(new pcl::PointCloud<pcl::PointXYZ>);
    pcl::io::loadPCDFile("/home/slishy/Code/PCD/hanjie/target1.pcd",*cloud_in_);
-   Getleft(cloud_in_,cloud_right);
-   Getright(cloud_in_,cloud_left);
+    /* for(size_t i =0;i < cloud_in_->points.size(); i++)
+   {
+   	cloud_in_->points[i].x = cloud_in_->points[i].x * 0.001;
+   	cloud_in_->points[i].y = cloud_in_->points[i].y * 0.001;
+   	cloud_in_->points[i].z = cloud_in_->points[i].z * 0.001;
+   }*/
    GetWHWithCorner(cloud_in_,cloud_out);
-
+    for (size_t i = 0; i < 8; i++)
+    {
+        cout << cloud_out->points[i] <<endl;
+    }
    Pointviewer pv;
-   pv.simpleVisN(cloud_out,cloud_right);
+   pv.simpleVisN(cloud_out);
     
 } 

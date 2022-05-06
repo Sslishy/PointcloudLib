@@ -163,7 +163,6 @@ void computeangle::ComputeRotationAngle(Eigen::Vector3f & RPY)
 	rz_matrix = eulerAnglesToRotationMatrix(rzangle);
 	rotation_matrix = rotation_matrix *rz_matrix ;
 	RPY = rotationMatrixToEulerAngles(rotation_matrix);
-
 }
 void computeangle::computeRPY(const vector<pcl::Normal> Normal_Z, const vector<pcl::Normal> Normal_X, const vector<pcl::Normal> Normal_Y, vector<cv::Vec3f>& RPYList)
 {
@@ -236,7 +235,7 @@ Eigen::Matrix3f computeangle::eulerAnglesToRotationMatrix(const Eigen::Vector3f 
 	R_z(2,2) = 1;
 	// Combined rotation matrix
 	Eigen::Matrix3f R_ ;
-	R_= R_z * R_y * R_x;
+	R_= R_x * R_y * R_z;
 	return R_;
 }
 cv::Mat computeangle::eulerAnglesToRotationMatrix(const cv::Vec3f theta_)

@@ -73,15 +73,15 @@ CMakeFiles/Planefitting.dir/Planefitting.cpp.o: CMakeFiles/Planefitting.dir/flag
 CMakeFiles/Planefitting.dir/Planefitting.cpp.o: ../Planefitting.cpp
 CMakeFiles/Planefitting.dir/Planefitting.cpp.o: CMakeFiles/Planefitting.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Planefitting.dir/Planefitting.cpp.o"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Planefitting.dir/Planefitting.cpp.o -MF CMakeFiles/Planefitting.dir/Planefitting.cpp.o.d -o CMakeFiles/Planefitting.dir/Planefitting.cpp.o -c /home/slishy/Code/class/lib/Planefitting.cpp
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Planefitting.dir/Planefitting.cpp.o -MF CMakeFiles/Planefitting.dir/Planefitting.cpp.o.d -o CMakeFiles/Planefitting.dir/Planefitting.cpp.o -c /home/slishy/Code/class/lib/Planefitting.cpp
 
 CMakeFiles/Planefitting.dir/Planefitting.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Planefitting.dir/Planefitting.cpp.i"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/Planefitting.cpp > CMakeFiles/Planefitting.dir/Planefitting.cpp.i
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/Planefitting.cpp > CMakeFiles/Planefitting.dir/Planefitting.cpp.i
 
 CMakeFiles/Planefitting.dir/Planefitting.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Planefitting.dir/Planefitting.cpp.s"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/Planefitting.cpp -o CMakeFiles/Planefitting.dir/Planefitting.cpp.s
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/Planefitting.cpp -o CMakeFiles/Planefitting.dir/Planefitting.cpp.s
 
 # Object files for target Planefitting
 Planefitting_OBJECTS = \

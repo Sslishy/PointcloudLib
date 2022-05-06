@@ -1,47 +1,52 @@
 [
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -isystem /usr/include/vtk-7.1 -isystem /usr/include/freetype2 -isystem /usr/local/include/pcl-1.11 -isystem /usr/include/eigen3 -isystem /usr/include/ni -isystem /usr/include/openni2 -isystem /usr/include/opencv4 -g -march=native -msse4.2 -mfpmath=sse -o CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o -c /home/slishy/Code/class/lib/3SVIZgongtest.cpp",
-  "file": "/home/slishy/Code/class/lib/3SVIZgongtest.cpp"
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/python3.8 -isystem /usr/include/vtk-7.1 -isystem /usr/include/freetype2 -isystem /usr/local/include/pcl-1.11 -isystem /usr/include/eigen3 -isystem /usr/include/ni -isystem /usr/include/openni2 -isystem /usr/include/opencv4 -g -march=native -msse4.2 -mfpmath=sse -o CMakeFiles/3SVIZxizang.dir/3SVIZxizang.cpp.o -c /home/slishy/Code/class/lib/3SVIZxizang.cpp",
+  "file": "/home/slishy/Code/class/lib/3SVIZxizang.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPointviewer_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o -c /home/slishy/Code/class/lib/Pointviewer.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DLinefitting_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/Linefitting.dir/Linefitting.cpp.o -c /home/slishy/Code/class/lib/Linefitting.cpp",
+  "file": "/home/slishy/Code/class/lib/Linefitting.cpp"
+},
+{
+  "directory": "/home/slishy/Code/class/lib/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPointviewer_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/Pointviewer.dir/Pointviewer.cpp.o -c /home/slishy/Code/class/lib/Pointviewer.cpp",
   "file": "/home/slishy/Code/class/lib/Pointviewer.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPointCloudAligment_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o -c /home/slishy/Code/class/lib/PointCloudAligment.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPointCloudAligment_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o -c /home/slishy/Code/class/lib/PointCloudAligment.cpp",
   "file": "/home/slishy/Code/class/lib/PointCloudAligment.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPlanefitting_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/Planefitting.dir/Planefitting.cpp.o -c /home/slishy/Code/class/lib/Planefitting.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPlanefitting_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/Planefitting.dir/Planefitting.cpp.o -c /home/slishy/Code/class/lib/Planefitting.cpp",
   "file": "/home/slishy/Code/class/lib/Planefitting.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dcylinderfitting_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o -c /home/slishy/Code/class/lib/cylinderfitting.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dcylinderfitting_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o -c /home/slishy/Code/class/lib/cylinderfitting.cpp",
   "file": "/home/slishy/Code/class/lib/cylinderfitting.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DComputepointspose_EXPORTS -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o -c /home/slishy/Code/class/lib/Computepointspose.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DComputepointspose_EXPORTS -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/Computepointspose.dir/Computepointspose.cpp.o -c /home/slishy/Code/class/lib/Computepointspose.cpp",
   "file": "/home/slishy/Code/class/lib/Computepointspose.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPointProcess_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/PointProcess.dir/PointProcess.cpp.o -c /home/slishy/Code/class/lib/PointProcess.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -DPointProcess_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/PointProcess.dir/PointProcess.cpp.o -c /home/slishy/Code/class/lib/PointProcess.cpp",
   "file": "/home/slishy/Code/class/lib/PointProcess.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dcomputeangle_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/computeangle.dir/computeangle.cpp.o -c /home/slishy/Code/class/lib/computeangle.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dcomputeangle_EXPORTS -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/computeangle.dir/computeangle.cpp.o -c /home/slishy/Code/class/lib/computeangle.cpp",
   "file": "/home/slishy/Code/class/lib/computeangle.cpp"
 },
 {
   "directory": "/home/slishy/Code/class/lib/build",
-  "command": "/bin/c++ -DCollisionDetection_EXPORTS -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -g -fPIC -o CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o -c /home/slishy/Code/class/lib/CollisionDetection.cpp",
+  "command": "/bin/x86_64-linux-gnu-g++-9 -DCollisionDetection_EXPORTS -DDISABLE_LIBUSB_1_0 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT=\"1(vtkRenderingContextOpenGL2)\" -DvtkRenderingCore_AUTOINIT=\"3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)\" -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/local/include/pcl-1.11 -I/usr/include/eigen3 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/opencv4 -I/usr/include/python3.8 -g -fPIC -o CMakeFiles/CollisionDetection.dir/CollisionDetection.cpp.o -c /home/slishy/Code/class/lib/CollisionDetection.cpp",
   "file": "/home/slishy/Code/class/lib/CollisionDetection.cpp"
 }
 ]

@@ -29,9 +29,13 @@ public:
 	{
 		this->m_Ratio = Ratio;		
 	}
+	const void SetNumofThreshold( const int num)
+	{
+		this->m_num = num;		
+	}
 	Planefitting();
 	void extractbynormal(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out); 
-	void extract(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, vector<pcl::PointCloud<pcl::PointXYZ>>& cloudlist);
+	void extract(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in, vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& cloudlist);
 	void extract(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in,pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out,string Negative);
 	
 	
@@ -39,6 +43,6 @@ private:
 	int	m_MaxIterations;
 	float m_DistanceThreshold;
 	float m_Ratio;
-
+	int m_num;
 };
 

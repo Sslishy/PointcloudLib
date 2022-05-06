@@ -121,7 +121,8 @@ if (argv[2] == box)
 		Planefitting plane;
 		plane.SetDistanceThreshold(0.01);
 		plane.SetMaxIterations(100);
-		plane.extract(cloud,cloudlist);
+		
+		plane.extractbynormal(cloud,cloudlist);
 		Computepointspose Cp;
 		//设置通过多少个点算法线
 		Cp.SetFindNum(999);
@@ -191,7 +192,7 @@ if (argv[2] == box)
 		plane.SetRatio(0.8);
 		plane.SetDistanceThreshold(0.003);
 		plane.SetMaxIterations(50);
-		plane.extract(cloud,cloudlist);
+		plane.extractbynormal(cloud,cloudlist);
 		Computepointspose Cp;
 		//设置通过多少个点算法线
 		Cp.SetFindNum(999);
@@ -244,7 +245,7 @@ if (argv[2] == box)
 		Planefitting plane;
 		plane.SetDistanceThreshold(0.01);
 		plane.SetMaxIterations(100);
-		plane.extract(cloud,cloudlist);
+		plane.extractbynormal(cloud,cloudlist);
 		Computepointspose Cp;
 		//设置通过多少个点算法线
 		Cp.SetFindNum(100);
@@ -297,7 +298,7 @@ if (argv[2] == box)
 		plane.SetRatio(0.8);
 		plane.SetDistanceThreshold(0.003);
 		plane.SetMaxIterations(50);
-		plane.extract(cloud,cloudlist);
+		plane.extractbynormal(cloud,cloudlist);
 		Computepointspose Cp;
 		//设置通过多少个点算法线
 		Cp.SetFindNum(999);
@@ -350,7 +351,7 @@ if (argv[2] == box)
 		Planefitting plane;
 		plane.SetDistanceThreshold(0.01);
 		plane.SetMaxIterations(100);
-		plane.extract(cloud,cloudlist);
+		plane.extractbynormal(cloud,cloudlist);
 		Computepointspose Cp;
 		//设置通过多少个点算法线
 		Cp.SetFindNum(100);

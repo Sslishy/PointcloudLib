@@ -117,17 +117,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named 3SVIZgongtest
+# Target rules for targets named 3SVIZxizang
 
 # Build rule for target.
-3SVIZgongtest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 3SVIZgongtest
-.PHONY : 3SVIZgongtest
+3SVIZxizang: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 3SVIZxizang
+.PHONY : 3SVIZxizang
 
 # fast build rule for target.
-3SVIZgongtest/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/build
-.PHONY : 3SVIZgongtest/fast
+3SVIZxizang/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZxizang.dir/build.make CMakeFiles/3SVIZxizang.dir/build
+.PHONY : 3SVIZxizang/fast
+
+#=============================================================================
+# Target rules for targets named Linefitting
+
+# Build rule for target.
+Linefitting: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Linefitting
+.PHONY : Linefitting
+
+# fast build rule for target.
+Linefitting/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Linefitting.dir/build.make CMakeFiles/Linefitting.dir/build
+.PHONY : Linefitting/fast
 
 #=============================================================================
 # Target rules for targets named Pointviewer
@@ -233,29 +246,29 @@ CollisionDetection/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CollisionDetection.dir/build.make CMakeFiles/CollisionDetection.dir/build
 .PHONY : CollisionDetection/fast
 
-3SVIZgongtest.o: 3SVIZgongtest.cpp.o
-.PHONY : 3SVIZgongtest.o
+3SVIZxizang.o: 3SVIZxizang.cpp.o
+.PHONY : 3SVIZxizang.o
 
 # target to build an object file
-3SVIZgongtest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o
-.PHONY : 3SVIZgongtest.cpp.o
+3SVIZxizang.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZxizang.dir/build.make CMakeFiles/3SVIZxizang.dir/3SVIZxizang.cpp.o
+.PHONY : 3SVIZxizang.cpp.o
 
-3SVIZgongtest.i: 3SVIZgongtest.cpp.i
-.PHONY : 3SVIZgongtest.i
+3SVIZxizang.i: 3SVIZxizang.cpp.i
+.PHONY : 3SVIZxizang.i
 
 # target to preprocess a source file
-3SVIZgongtest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.i
-.PHONY : 3SVIZgongtest.cpp.i
+3SVIZxizang.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZxizang.dir/build.make CMakeFiles/3SVIZxizang.dir/3SVIZxizang.cpp.i
+.PHONY : 3SVIZxizang.cpp.i
 
-3SVIZgongtest.s: 3SVIZgongtest.cpp.s
-.PHONY : 3SVIZgongtest.s
+3SVIZxizang.s: 3SVIZxizang.cpp.s
+.PHONY : 3SVIZxizang.s
 
 # target to generate assembly for a file
-3SVIZgongtest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.s
-.PHONY : 3SVIZgongtest.cpp.s
+3SVIZxizang.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZxizang.dir/build.make CMakeFiles/3SVIZxizang.dir/3SVIZxizang.cpp.s
+.PHONY : 3SVIZxizang.cpp.s
 
 CollisionDetection.o: CollisionDetection.cpp.o
 .PHONY : CollisionDetection.o
@@ -304,6 +317,30 @@ Computepointspose.s: Computepointspose.cpp.s
 Computepointspose.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Computepointspose.dir/build.make CMakeFiles/Computepointspose.dir/Computepointspose.cpp.s
 .PHONY : Computepointspose.cpp.s
+
+Linefitting.o: Linefitting.cpp.o
+.PHONY : Linefitting.o
+
+# target to build an object file
+Linefitting.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Linefitting.dir/build.make CMakeFiles/Linefitting.dir/Linefitting.cpp.o
+.PHONY : Linefitting.cpp.o
+
+Linefitting.i: Linefitting.cpp.i
+.PHONY : Linefitting.i
+
+# target to preprocess a source file
+Linefitting.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Linefitting.dir/build.make CMakeFiles/Linefitting.dir/Linefitting.cpp.i
+.PHONY : Linefitting.cpp.i
+
+Linefitting.s: Linefitting.cpp.s
+.PHONY : Linefitting.s
+
+# target to generate assembly for a file
+Linefitting.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Linefitting.dir/build.make CMakeFiles/Linefitting.dir/Linefitting.cpp.s
+.PHONY : Linefitting.cpp.s
 
 Planefitting.o: Planefitting.cpp.o
 .PHONY : Planefitting.o
@@ -457,24 +494,28 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... 3SVIZgongtest"
+	@echo "... 3SVIZxizang"
 	@echo "... CollisionDetection"
 	@echo "... Computepointspose"
+	@echo "... Linefitting"
 	@echo "... Planefitting"
 	@echo "... PointCloudAligment"
 	@echo "... PointProcess"
 	@echo "... Pointviewer"
 	@echo "... computeangle"
 	@echo "... cylinderfitting"
-	@echo "... 3SVIZgongtest.o"
-	@echo "... 3SVIZgongtest.i"
-	@echo "... 3SVIZgongtest.s"
+	@echo "... 3SVIZxizang.o"
+	@echo "... 3SVIZxizang.i"
+	@echo "... 3SVIZxizang.s"
 	@echo "... CollisionDetection.o"
 	@echo "... CollisionDetection.i"
 	@echo "... CollisionDetection.s"
 	@echo "... Computepointspose.o"
 	@echo "... Computepointspose.i"
 	@echo "... Computepointspose.s"
+	@echo "... Linefitting.o"
+	@echo "... Linefitting.i"
+	@echo "... Linefitting.s"
 	@echo "... Planefitting.o"
 	@echo "... Planefitting.i"
 	@echo "... Planefitting.s"

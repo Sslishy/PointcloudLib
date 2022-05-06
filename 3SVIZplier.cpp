@@ -325,7 +325,6 @@ main(int argc, char **argv) {
 		rx.normalize();
 		rz.normalize();
 		Eigen::Vector3d ry = rz.cross(rx);
-		
 		//cout<<rotation_between_vectors_to_matrix(rx,rz)<<endl;
 		ry.normalize();
 		/*rx = ry.cross(rz);
@@ -357,10 +356,10 @@ main(int argc, char **argv) {
 		R = Eigen::AngleAxisd(CV_PI/180 * -rzangle[2], Eigen::Vector3d(0, 0, 1)).toRotationMatrix();
 		cout << rotationMatrixToEulerAngles(R).transpose() <<endl;
 		cout << rotationMatrixToEulerAngles(rotation_matrix_rpy).transpose() <<endl;
-		rotation_matrix_rpy =   rotation_matrix_rpy *R ;
+		rotation_matrix_rpy =   rotation_matrix_rpy * R;
 		cout << rotationMatrixToEulerAngles(rotation_matrix_rpy).transpose() <<endl;
-		  Pointviewer pv;
-    pv.simpleVisN(target_cloud_out,target_cloud_,center,rx,ry,rz);
+		Pointviewer pv;
+    	pv.simpleVisN(target_cloud_out,target_cloud_,center,rx,ry,rz);
 	}
 	else
 	{
@@ -393,7 +392,7 @@ main(int argc, char **argv) {
 		cout << rotation_matrix <<endl;
 		cout << rotationMatrixToEulerAngles(rotation_matrix).transpose() <<endl;
 		  Pointviewer pv;
-    pv.simpleVisN(target_cloud_out,target_cloud_,center,rx,ry,rz);
+       pv.simpleVisN(target_cloud_out,target_cloud_,center,rx,ry,rz);
 	}
 	
 

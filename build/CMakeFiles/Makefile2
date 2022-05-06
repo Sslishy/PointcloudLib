@@ -63,7 +63,8 @@ CMAKE_BINARY_DIR = /home/slishy/Code/class/lib/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/3SVIZgongtest.dir/all
+all: CMakeFiles/3SVIZxizang.dir/all
+all: CMakeFiles/Linefitting.dir/all
 all: CMakeFiles/Pointviewer.dir/all
 all: CMakeFiles/PointCloudAligment.dir/all
 all: CMakeFiles/Planefitting.dir/all
@@ -79,7 +80,8 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/3SVIZgongtest.dir/clean
+clean: CMakeFiles/3SVIZxizang.dir/clean
+clean: CMakeFiles/Linefitting.dir/clean
 clean: CMakeFiles/Pointviewer.dir/clean
 clean: CMakeFiles/PointCloudAligment.dir/clean
 clean: CMakeFiles/Planefitting.dir/clean
@@ -91,30 +93,56 @@ clean: CMakeFiles/CollisionDetection.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/3SVIZgongtest.dir
+# Target rules for target CMakeFiles/3SVIZxizang.dir
 
 # All Build rule for target.
-CMakeFiles/3SVIZgongtest.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=1,2 "Built target 3SVIZgongtest"
-.PHONY : CMakeFiles/3SVIZgongtest.dir/all
+CMakeFiles/3SVIZxizang.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZxizang.dir/build.make CMakeFiles/3SVIZxizang.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZxizang.dir/build.make CMakeFiles/3SVIZxizang.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=1,2 "Built target 3SVIZxizang"
+.PHONY : CMakeFiles/3SVIZxizang.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/3SVIZgongtest.dir/rule: cmake_check_build_system
+CMakeFiles/3SVIZxizang.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/slishy/Code/class/lib/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/3SVIZgongtest.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/3SVIZxizang.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/slishy/Code/class/lib/build/CMakeFiles 0
-.PHONY : CMakeFiles/3SVIZgongtest.dir/rule
+.PHONY : CMakeFiles/3SVIZxizang.dir/rule
 
 # Convenience name for target.
-3SVIZgongtest: CMakeFiles/3SVIZgongtest.dir/rule
-.PHONY : 3SVIZgongtest
+3SVIZxizang: CMakeFiles/3SVIZxizang.dir/rule
+.PHONY : 3SVIZxizang
 
 # clean rule for target.
-CMakeFiles/3SVIZgongtest.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZgongtest.dir/build.make CMakeFiles/3SVIZgongtest.dir/clean
-.PHONY : CMakeFiles/3SVIZgongtest.dir/clean
+CMakeFiles/3SVIZxizang.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3SVIZxizang.dir/build.make CMakeFiles/3SVIZxizang.dir/clean
+.PHONY : CMakeFiles/3SVIZxizang.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Linefitting.dir
+
+# All Build rule for target.
+CMakeFiles/Linefitting.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Linefitting.dir/build.make CMakeFiles/Linefitting.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Linefitting.dir/build.make CMakeFiles/Linefitting.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=7,8 "Built target Linefitting"
+.PHONY : CMakeFiles/Linefitting.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Linefitting.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/slishy/Code/class/lib/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Linefitting.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/slishy/Code/class/lib/build/CMakeFiles 0
+.PHONY : CMakeFiles/Linefitting.dir/rule
+
+# Convenience name for target.
+Linefitting: CMakeFiles/Linefitting.dir/rule
+.PHONY : Linefitting
+
+# clean rule for target.
+CMakeFiles/Linefitting.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Linefitting.dir/build.make CMakeFiles/Linefitting.dir/clean
+.PHONY : CMakeFiles/Linefitting.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Pointviewer.dir
@@ -123,7 +151,7 @@ CMakeFiles/3SVIZgongtest.dir/clean:
 CMakeFiles/Pointviewer.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pointviewer.dir/build.make CMakeFiles/Pointviewer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pointviewer.dir/build.make CMakeFiles/Pointviewer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=13,14 "Built target Pointviewer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=15,16 "Built target Pointviewer"
 .PHONY : CMakeFiles/Pointviewer.dir/all
 
 # Build rule for subdir invocation for target.
@@ -149,7 +177,7 @@ CMakeFiles/Pointviewer.dir/clean:
 CMakeFiles/PointCloudAligment.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PointCloudAligment.dir/build.make CMakeFiles/PointCloudAligment.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PointCloudAligment.dir/build.make CMakeFiles/PointCloudAligment.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=9,10 "Built target PointCloudAligment"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=11,12 "Built target PointCloudAligment"
 .PHONY : CMakeFiles/PointCloudAligment.dir/all
 
 # Build rule for subdir invocation for target.
@@ -175,7 +203,7 @@ CMakeFiles/PointCloudAligment.dir/clean:
 CMakeFiles/Planefitting.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Planefitting.dir/build.make CMakeFiles/Planefitting.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Planefitting.dir/build.make CMakeFiles/Planefitting.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=7,8 "Built target Planefitting"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=9,10 "Built target Planefitting"
 .PHONY : CMakeFiles/Planefitting.dir/all
 
 # Build rule for subdir invocation for target.
@@ -201,7 +229,7 @@ CMakeFiles/Planefitting.dir/clean:
 CMakeFiles/cylinderfitting.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cylinderfitting.dir/build.make CMakeFiles/cylinderfitting.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cylinderfitting.dir/build.make CMakeFiles/cylinderfitting.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=17,18 "Built target cylinderfitting"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=19,20 "Built target cylinderfitting"
 .PHONY : CMakeFiles/cylinderfitting.dir/all
 
 # Build rule for subdir invocation for target.
@@ -253,7 +281,7 @@ CMakeFiles/Computepointspose.dir/clean:
 CMakeFiles/PointProcess.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PointProcess.dir/build.make CMakeFiles/PointProcess.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PointProcess.dir/build.make CMakeFiles/PointProcess.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=11,12 "Built target PointProcess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=13,14 "Built target PointProcess"
 .PHONY : CMakeFiles/PointProcess.dir/all
 
 # Build rule for subdir invocation for target.
@@ -279,7 +307,7 @@ CMakeFiles/PointProcess.dir/clean:
 CMakeFiles/computeangle.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/computeangle.dir/build.make CMakeFiles/computeangle.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/computeangle.dir/build.make CMakeFiles/computeangle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=15,16 "Built target computeangle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=17,18 "Built target computeangle"
 .PHONY : CMakeFiles/computeangle.dir/all
 
 # Build rule for subdir invocation for target.

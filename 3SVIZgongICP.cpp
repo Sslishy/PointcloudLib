@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
 		return 0;
 	}
 
-    pcl::PointXYZ minpoint,maxpoint;
+   pcl::PointXYZ minpoint,maxpoint;
    pcl::getMinMax3D(*cloud_in,minpoint,maxpoint);
    pcl::Normal normalz;
    PointProcess pp;

@@ -73,15 +73,15 @@ CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o: CMakeFiles/PointClou
 CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o: ../PointCloudAligment.cpp
 CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o: CMakeFiles/PointCloudAligment.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o -MF CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o.d -o CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o -c /home/slishy/Code/class/lib/PointCloudAligment.cpp
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o -MF CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o.d -o CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.o -c /home/slishy/Code/class/lib/PointCloudAligment.cpp
 
 CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.i"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/PointCloudAligment.cpp > CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.i
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/PointCloudAligment.cpp > CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.i
 
 CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.s"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/PointCloudAligment.cpp -o CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.s
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/PointCloudAligment.cpp -o CMakeFiles/PointCloudAligment.dir/PointCloudAligment.cpp.s
 
 # Object files for target PointCloudAligment
 PointCloudAligment_OBJECTS = \

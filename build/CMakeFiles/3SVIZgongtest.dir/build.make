@@ -73,15 +73,15 @@ CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o: CMakeFiles/3SVIZgongtest.dir/f
 CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o: ../3SVIZgongtest.cpp
 CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o: CMakeFiles/3SVIZgongtest.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o -MF CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o.d -o CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o -c /home/slishy/Code/class/lib/3SVIZgongtest.cpp
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o -MF CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o.d -o CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.o -c /home/slishy/Code/class/lib/3SVIZgongtest.cpp
 
 CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.i"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/3SVIZgongtest.cpp > CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.i
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/3SVIZgongtest.cpp > CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.i
 
 CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.s"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/3SVIZgongtest.cpp -o CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.s
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/3SVIZgongtest.cpp -o CMakeFiles/3SVIZgongtest.dir/3SVIZgongtest.cpp.s
 
 # Object files for target 3SVIZgongtest
 3SVIZgongtest_OBJECTS = \

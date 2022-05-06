@@ -73,15 +73,15 @@ CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o: CMakeFiles/cylinderfitting
 CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o: ../cylinderfitting.cpp
 CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o: CMakeFiles/cylinderfitting.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/slishy/Code/class/lib/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o -MF CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o.d -o CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o -c /home/slishy/Code/class/lib/cylinderfitting.cpp
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o -MF CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o.d -o CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.o -c /home/slishy/Code/class/lib/cylinderfitting.cpp
 
 CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.i"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/cylinderfitting.cpp > CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.i
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/slishy/Code/class/lib/cylinderfitting.cpp > CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.i
 
 CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.s"
-	/bin/x86_64-linux-gnu-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/cylinderfitting.cpp -o CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.s
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/slishy/Code/class/lib/cylinderfitting.cpp -o CMakeFiles/cylinderfitting.dir/cylinderfitting.cpp.s
 
 # Object files for target cylinderfitting
 cylinderfitting_OBJECTS = \

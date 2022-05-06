@@ -88,6 +88,30 @@ void PointProcess::DownSimple(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_in)
         }*/
     }
  }
+ void PointProcess::extractionBoundary(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_in,pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_Boundary)
+ {
+    pcl::PointCloud<pcl::Boundary> boundaries; //保存边界估计结果
+	pcl::BoundaryEstimation<pcl::PointXYZ, pcl::Normal, pcl::Boundary> boundEst; //定义一个进行边界特征估计的对象
+	pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> normEst; //定义一个法线估计的对象
+	pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>); //保存法线估计的结果
+	normEst.setInputCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr(cloud_in)); 
+	normEst.setRadiusSearch(0.003); //设置法线估计的半径
+	normEst.compute(*normals); //将法线估计结果保存至normals
+	boundEst.setInputCloud(cloud_in); //设置输入的点云
+	boundEst.setInputNormals(normals); //设置边界估计的法线，因为边界估计依赖于法线
+	boundEst.setSearchMethod(pcl::search::KdTree<pcl::PointXYZ>::Ptr (new pcl::search::KdTree<pcl::PointXYZ>)); //设置搜索方式KdTree
+	boundEst.setKSearch(100);
+	boundEst.compute(boundaries); //将边界估计结果保存在boundaries
+	std::cerr << "boundaries: " <<boundaries.points.size() << std::endl;
+	//存储估计为边界的点云数据，将边界结果保存为pcl::PointXYZ类型
+	for(int i = 0; i < cloud_in->points.size(); i++) 
+	{ 
+		if(boundaries[i].boundary_point > 0) 
+		{ 
+			cloud_Boundary->push_back(cloud_in->points[i]); 
+		} 
+	} 
+ }
  void PointProcess::Removepoint(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_in)
  {
      pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;

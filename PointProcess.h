@@ -7,6 +7,8 @@
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/filters/passthrough.h>
 #include <pcl/filters/extract_indices.h>
+#include <pcl/features/normal_3d.h>
+#include<pcl/features/boundary.h>
 using namespace std;
 class PointProcess
 {
@@ -54,6 +56,7 @@ public:
     void limitZ(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_in);
     void limitX(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_in);
     void limitY(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_in);
+    void extractionBoundary(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_in,pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_Boundary);
 };
 
 PointProcess::PointProcess(/* args */)
